@@ -86,12 +86,11 @@ const CreateAccountComponent = ({
   };
 
   return (
-    <div style={{marginBottom: "25px"}}>
+    <div style={{ marginBottom: "50px" }}>
       <div className="create-user-component-container">
         <div className="title">
           <h2>Create account</h2>
           <p>Please fill out the following fields</p>
-          
         </div>
         <form onChange={onChange}>
           <label
@@ -106,8 +105,6 @@ const CreateAccountComponent = ({
             Username
           </label>
           <input type="text" placeholder="Enter username" id="username" required />{" "}
-
-
           <label
             htmlFor="email"
             style={{
@@ -120,9 +117,6 @@ const CreateAccountComponent = ({
             Email
           </label>
           <input type="email" placeholder="Enter email" id="email" required />
-
-
-
           <label
             htmlFor="password"
             style={{
@@ -153,12 +147,15 @@ const CreateAccountComponent = ({
             required
           />
           <div>
-            <label htmlFor="age" style={{
-              float: "left",
-              fontSize: "16px",
-              fontWeight: "lighter",
-              marginLeft: "2px",
-            }}>
+            <label
+              htmlFor="age"
+              style={{
+                float: "left",
+                fontSize: "16px",
+                fontWeight: "lighter",
+                marginLeft: "2px",
+              }}
+            >
               Please enter your birthdate{" "}
             </label>
             <input
@@ -167,8 +164,15 @@ const CreateAccountComponent = ({
               min={minimumDate}
               max={maximumDate}
               required
-              style={{ float: "righ" }}
             />
+
+            <div style={{marginTop: "15px"}} >
+              <input type="checkbox" style={{height: "2em", width: "2em", verticalAlign: "middle"}}/>
+              <label htmlFor="checkbox">
+                I agree to these <a href="#">Terms and Conditions</a>.
+              </label>
+            </div>
+
           </div>
           <button className="glow-on-hover create-button" onClick={performCreateUser}>
             Create your EcoDrive account

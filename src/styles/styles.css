@@ -27,6 +27,8 @@ body {
     rgba(0, 0, 0, 0.8085828081232493) 0%,
     rgba(5, 5, 5, 0.14471726190476186) 100%
   );
+  position: sticky;
+  top: 0;
 }
 
 .topnav a {
@@ -722,7 +724,7 @@ form.search-field-form button:hover {
 }
 
 .logo:hover {
-  transform: rotate(360deg);
+  transform: rotate(360deg) scale(1.1);
 }
 
 .homepage-links {

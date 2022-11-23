@@ -16,7 +16,7 @@ function Home() {
             style={{ maxWidth: "180px", margin: "30px auto 20px", display: "block" }}
             className="logo"
           />
-          <h1>Welcome to CineWatch</h1>
+          <h1>Welcome to EcoDriver</h1>
           <div className="homepage-links">
             <div className="tag">
               <Link to="/search">Start searching here!</Link>

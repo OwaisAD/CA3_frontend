@@ -12,7 +12,7 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
       </NavLink>
 
       <NavLink to="/search">
-        <i className="fa fa-fw fa-search"></i> Search
+        <i className="fa fa-fw fa-users"></i> About
       </NavLink>
 
       {loggedIn && (
