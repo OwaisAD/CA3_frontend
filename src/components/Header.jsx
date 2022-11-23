@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import "../styles/header.css";
+import "../styles/styles.css";
 import LoggedInNavBar from "./LoggedInNavBar";
 import LoginButton from "./LoginButton";
 

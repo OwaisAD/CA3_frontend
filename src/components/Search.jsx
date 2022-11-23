@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import facade from "../facades/apiFacade";
-import Movie from "./moviesComponents/Movie";
 
 function Search({ movieData, setMovieData }) {
   const inputRef = useRef();

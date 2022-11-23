@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoginComponent from "./login/LoginComponent";
-import Image from "../images/cinewatch2.png";
+import Image from "../images/ecodrive-logo.png";
 
 const Login = ({ setLoggedIn, setErrorMsg, errorMsg }) => {
   return (
@@ -9,7 +9,7 @@ const Login = ({ setLoggedIn, setErrorMsg, errorMsg }) => {
         src={Image}
         alt="cinewatch logo"
         style={{
-          maxWidth: "120px",
+          maxWidth: "160px",
           margin: "30px auto 20px",
           display: "block",
         }}

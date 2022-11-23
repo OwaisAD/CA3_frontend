@@ -6,7 +6,6 @@ import Search from './components/Search'
 import Error from './components/Error'
 import Profile from './components/Profile'
 import Login from './components/Login'
-import Watchlist from './components/moviesComponents/Watchlist'
 import ProtectedRoutes from './ProtectedRoutes'
 import Register from './components/Registration'
 
@@ -32,7 +31,7 @@ const App = () => {
         <Route path="search" element={<Search movieData={movieData} setMovieData={setMovieData} />} />
         <Route element={<ProtectedRoutes/>}>
           <Route path="/profile" element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} setAddedMovieToWatchlist={setAddedMovieToWatchlist}/>} />
-          <Route path='/watchlist' element={<Watchlist loggedIn={loggedIn} setLoggedIn={setLoggedIn} addedMovieToWatchlist={addedMovieToWatchlist} setAddedMovieToWatchlist={setAddedMovieToWatchlist} dataFromServer={dataFromServer} setDataFromServer={setDataFromServer}/>}/>
+         
         </Route>
         
         <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg} errorMsg={errorMsg} createAccountClicked={createAccountClicked} setCreateAccountClicked={setCreateAccountClicked}/>} />

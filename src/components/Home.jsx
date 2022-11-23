@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import Image from "../images/cinewatch2.png";
+import Image from "../images/ecodrive-logo.png";
 
 function Home() {
   return (
@@ -13,7 +13,7 @@ function Home() {
           <img
             src={Image}
             alt="cinewatch logo"
-            style={{ maxWidth: "140px", margin: "30px auto 20px", display: "block" }}
+            style={{ maxWidth: "180px", margin: "30px auto 20px", display: "block" }}
             className="logo"
           />
           <h1>Welcome to CineWatch</h1>

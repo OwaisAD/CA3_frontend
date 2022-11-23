@@ -86,11 +86,12 @@ const CreateAccountComponent = ({
   };
 
   return (
-    <div>
+    <div style={{marginBottom: "25px"}}>
       <div className="create-user-component-container">
         <div className="title">
           <h2>Create account</h2>
           <p>Please fill out the following fields</p>
+          
         </div>
         <form onChange={onChange}>
           <label
@@ -105,6 +106,23 @@ const CreateAccountComponent = ({
             Username
           </label>
           <input type="text" placeholder="Enter username" id="username" required />{" "}
+
+
+          <label
+            htmlFor="email"
+            style={{
+              float: "left",
+              fontSize: "16px",
+              fontWeight: "lighter",
+              marginLeft: "1px",
+            }}
+          >
+            Email
+          </label>
+          <input type="email" placeholder="Enter email" id="email" required />
+
+
+
           <label
             htmlFor="password"
             style={{
@@ -134,8 +152,13 @@ const CreateAccountComponent = ({
             id="passwordRepeated"
             required
           />
-          <div style={{ marginTop: "20px" }}>
-            <label htmlFor="age" style={{ float: "left" }}>
+          <div>
+            <label htmlFor="age" style={{
+              float: "left",
+              fontSize: "16px",
+              fontWeight: "lighter",
+              marginLeft: "2px",
+            }}>
               Please enter your birthdate{" "}
             </label>
             <input
@@ -148,7 +171,7 @@ const CreateAccountComponent = ({
             />
           </div>
           <button className="glow-on-hover create-button" onClick={performCreateUser}>
-            Create your CineWatch account
+            Create your EcoDrive account
           </button>
         </form>
 
