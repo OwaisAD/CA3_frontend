@@ -29,7 +29,19 @@ const Profile = ({ loggedIn, setLoggedIn, addedMovieToWatchlist }) => {
               Profile <span style={{ color: "white" }}>Change your personal information</span>{" "}
             </h1>
           </div>
+
           <div className="profile-container">
+            <div className="profile-inner-container">
+              <h3>Trip History</h3>
+              {dataFromServer?.movies?.map((movie) => {
+                return (
+                  <li key={movie.id}>
+                    {movie.title} from {movie.year}
+                  </li>
+                );
+              })}
+            </div>
+
             <div className="profile-inner-container">
               <div
                 style={{
@@ -39,26 +51,35 @@ const Profile = ({ loggedIn, setLoggedIn, addedMovieToWatchlist }) => {
                 }}
               >
                 <p>
-                  Username: <span style={{ fontWeight: "bold" }}>{dataFromServer?.username}</span>
+                  <span style={{ fontWeight: "bold" }}>Username: </span>
+                  {dataFromServer?.username}
                 </p>
                 <button>Edit</button>
               </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: "20px",
+                }}
+              >
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Email: </span>
+                  {dataFromServer?.username}
+                </p>
+                <button>Edit</button>
+              </div>
+
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <p>
-                  Age: <span style={{ fontWeight: "bold" }}>{dataFromServer?.age}</span>
+                  <span style={{ fontWeight: "bold" }}>Age: </span>
+                  {dataFromServer?.age}
                 </p>
                 <button>Edit</button>
               </div>
-            </div>
-            <div className="profile-inner-container">
-              <h3>Your movie list</h3>
-              {dataFromServer?.movies?.map((movie) => {
-                return (
-                  <li key={movie.id}>
-                    {movie.title} from {movie.year}
-                  </li>
-                );
-              })}
+
+              <button>Request password change</button>
             </div>
           </div>
         </>

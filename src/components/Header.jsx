@@ -8,25 +8,17 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
   return (
     <nav className="topnav">
       <NavLink to="/" end>
-        <i className="fa fa-fw fa-home"></i> Home
+        <i class="fas fa-home"></i> Home
       </NavLink>
 
       <NavLink to="/search">
-        <i className="fa fa-fw fa-users"></i> About
+        <i class="fas fa-seedling"></i> About
       </NavLink>
 
       {loggedIn && (
         <>
           <NavLink to="/watchlist">
-            <i className="fa fa-fw fa-film"></i> Watchlist
-          </NavLink>
-        </>
-      )}
-
-      {loggedIn && (
-        <>
-          <NavLink to="/profile">
-            <i className="fa fa-fw fa-id-badge"></i> Profile
+            <i class="fas fa-car"></i> My Trips
           </NavLink>
         </>
       )}

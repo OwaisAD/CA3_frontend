@@ -823,8 +823,8 @@ form.search-field-form button:hover {
   background-color: white;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 12px;
+  border-radius: 10px;
 }
-.profile-inner-container:nth-child(2) {
+.profile-inner-container:nth-child(1) {
   width: 300px;
 }

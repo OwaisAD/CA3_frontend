@@ -2,12 +2,13 @@ import { useState } from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Header from './components/Header'
 import Home from './components/Home'
-import Search from './components/Search'
+import About from './components/About'
 import Error from './components/Error'
 import Profile from './components/Profile'
 import Login from './components/Login'
 import ProtectedRoutes from './ProtectedRoutes'
 import Register from './components/Registration'
+import Trips from './components/Trips'
 
 const App = () => {
 
@@ -28,8 +29,9 @@ const App = () => {
       
       <Routes>
         <Route path="/" element={<Home />}/> 
-        <Route path="search" element={<Search movieData={movieData} setMovieData={setMovieData} />} />
+        <Route path="about" element={<About/>} />
         <Route element={<ProtectedRoutes/>}>
+          <Route path="/trips" element={<Trips />} />
           <Route path="/profile" element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} setAddedMovieToWatchlist={setAddedMovieToWatchlist}/>} />
          
         </Route>

@@ -22,7 +22,7 @@ const CreateAccountComponent = ({
   var dd = String(today.getDate());
   var mm = String(today.getMonth() + 1); //January is 0!
   var minimum_yyyy = today.getFullYear() - 120;
-  var maximum_yyyy = today.getFullYear() - 13;
+  var maximum_yyyy = today.getFullYear() - 18;
 
   const minimumDate = minimum_yyyy + "-" + mm + "-" + dd; // set because maximum age is 120
   const maximumDate = maximum_yyyy + "-" + mm + "-" + dd; // set because minimum age is 13
@@ -169,7 +169,7 @@ const CreateAccountComponent = ({
             <div style={{marginTop: "15px"}} >
               <input type="checkbox" style={{height: "2em", width: "2em", verticalAlign: "middle"}}/>
               <label htmlFor="checkbox">
-                I agree to these <a href="#">Terms and Conditions</a>.
+                I agree to these <a href="#" target="_blank">Terms and Conditions</a>.
               </label>
             </div>
 

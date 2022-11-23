@@ -16,7 +16,7 @@ const LoggedInNavBar = ({ setLoggedIn }) => {
       <div className="btn-login">
         <a style={{ paddingRight: "10px", cursor: "pointer" }} onClick={() => navigate("/profile")}>
           Hello, {facade.getUsername()}
-          <i className="fa fa-fw fa-user"></i>
+          {' '}<i class="fas fa-user-circle"></i>
         </a>
         <button onClick={logout}>Logout</button>
       </div>

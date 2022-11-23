@@ -1,9 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
-import facade from "../facades/apiFacade";
-
-function Search({ movieData, setMovieData }) {
+function About({ movieData, setMovieData }) {
 
   return (
     <>
@@ -21,4 +16,4 @@ function Search({ movieData, setMovieData }) {
   );
 }
 
-export default Search;
+export default About;
