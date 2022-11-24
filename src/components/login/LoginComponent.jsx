@@ -60,6 +60,11 @@ const LoginComponent = ({
           Password
         </label>
         <input type="password" placeholder="Enter password" id="password" required />
+
+        <div style={{marginTop: "10px"}}>
+        <a style={{ color: "#0000EE", cursor: "pointer"}}>Forgot your password?</a>
+        </div>
+
         <button className="glow-on-hover sign-in-button" onClick={performLogin}>
           Sign in
         </button>

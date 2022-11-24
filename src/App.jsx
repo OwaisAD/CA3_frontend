@@ -22,7 +22,7 @@ const App = () => {
     const initialState = () => {
       window.sessionStorage.getItem("movie") 
     }
-    const [movieData, setMovieData] = useState(initialState);
+
   
   return (
     <>
