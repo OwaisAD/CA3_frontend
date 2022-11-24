@@ -8,17 +8,17 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
   return (
     <nav className="topnav">
       <NavLink to="/" end>
-        <i class="fas fa-home"></i> Home
+        <i className="fas fa-home"></i> Home
       </NavLink>
 
       <NavLink to="/about">
-        <i class="fas fa-seedling"></i> About
+        <i className="fas fa-seedling"></i> About
       </NavLink>
 
       {loggedIn && (
         <>
           <NavLink to="/mytrips">
-            <i class="fas fa-car"></i> My Trips
+            <i className="fas fa-car"></i> My Trips
           </NavLink>
         </>
       )}

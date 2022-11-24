@@ -49,7 +49,8 @@ function apiFacade() {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("roles");
     localStorage.removeItem("username");
-    localStorage.removeItem("role")
+    localStorage.removeItem("role");
+    localStorage.removeItem("isLoggedIn");
   };
 
 
@@ -65,6 +66,7 @@ function apiFacade() {
         setToken(res.token)
         setRole(res.roles)
         setUsername(res.username)
+        window.localStorage.setItem("isLoggedIn", true)
       })
   };
 
@@ -120,25 +122,6 @@ function apiFacade() {
         .then(handleHttpErrors)
   }
 
-  const getUserRoles = () =>
-  {
-      const token = getToken()
-      if (token != null)
-      {
-          const payloadBase64 = getToken().split('.')[1]
-          const decodedClaims = JSON.parse(window.atob(payloadBase64))
-          const roles = decodedClaims.roles
-          return roles
-      } else return ""
-  }
-
-  const hasUserAccess = (neededRole, loggedIn) =>
-  {
-      const roles = getUserRoles().split(',')
-      return loggedIn && roles.includes(neededRole)
-  }
-
-
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -172,8 +155,6 @@ function apiFacade() {
     addMovieToUser,
     removeMovieFromUser,
     getUserMovies,
-    getUserRoles,
-    hasUserAccess,
   };
 }
 const facade = apiFacade();

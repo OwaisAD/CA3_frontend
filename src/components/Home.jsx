@@ -19,7 +19,7 @@ function Home() {
           <h1>Welcome to EcoDriver</h1>
           <div className="homepage-links">
             <div className="tag">
-              <Link to="/search">Read more about us here!</Link>
+              <Link to="/about">Read more about us here!</Link>
             </div>
             <div className="tag">
               <Link to="/login">Already have a user?</Link>
