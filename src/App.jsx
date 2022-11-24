@@ -9,6 +9,7 @@ import Login from './components/Login'
 import ProtectedRoutes from './ProtectedRoutes'
 import Register from './components/Registration'
 import Trips from './components/Trips'
+import facade from './facades/apiFacade'
 
 const App = () => {
 
@@ -31,8 +32,8 @@ const App = () => {
         <Route path="/" element={<Home />}/> 
         <Route path="about" element={<About/>} />
         <Route element={<ProtectedRoutes/>}>
-          <Route path="/trips" element={<Trips />} />
-          <Route path="/profile" element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} setAddedMovieToWatchlist={setAddedMovieToWatchlist}/>} />
+          <Route path="/mytrips" element={facade.hasUserAccess("user", loggedIn) && <Trips />} />
+          <Route path="/profile" element={facade.hasUserAccess("user", loggedIn) && <Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} setAddedMovieToWatchlist={setAddedMovieToWatchlist}/>} />
          
         </Route>
         

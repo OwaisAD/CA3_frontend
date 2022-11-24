@@ -25,7 +25,7 @@ const LoginComponent = ({
       .login(user, pass)
       .then((res) => {
         setLoggedIn(true);
-        navigate("/search");
+        navigate("/mytrips");
       })
       .catch((err) => {
         err.fullError.then((e) => setErrorMsgLogin(e.message));

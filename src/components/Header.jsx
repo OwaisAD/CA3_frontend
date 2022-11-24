@@ -11,13 +11,13 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
         <i class="fas fa-home"></i> Home
       </NavLink>
 
-      <NavLink to="/search">
+      <NavLink to="/about">
         <i class="fas fa-seedling"></i> About
       </NavLink>
 
       {loggedIn && (
         <>
-          <NavLink to="/watchlist">
+          <NavLink to="/mytrips">
             <i class="fas fa-car"></i> My Trips
           </NavLink>
         </>

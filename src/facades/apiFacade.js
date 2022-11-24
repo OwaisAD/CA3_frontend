@@ -120,6 +120,24 @@ function apiFacade() {
         .then(handleHttpErrors)
   }
 
+  const getUserRoles = () =>
+  {
+      const token = getToken()
+      if (token != null)
+      {
+          const payloadBase64 = getToken().split('.')[1]
+          const decodedClaims = JSON.parse(window.atob(payloadBase64))
+          const roles = decodedClaims.roles
+          return roles
+      } else return ""
+  }
+
+  const hasUserAccess = (neededRole, loggedIn) =>
+  {
+      const roles = getUserRoles().split(',')
+      return loggedIn && roles.includes(neededRole)
+  }
+
 
   const makeOptions = (method, addToken, body) => {
     var opts = {
@@ -154,6 +172,8 @@ function apiFacade() {
     addMovieToUser,
     removeMovieFromUser,
     getUserMovies,
+    getUserRoles,
+    hasUserAccess,
   };
 }
 const facade = apiFacade();
