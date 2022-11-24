@@ -158,21 +158,28 @@ const CreateAccountComponent = ({
             >
               Please enter your birthdate{" "}
             </label>
-            <input
-              type="date"
-              id="age"
-              min={minimumDate}
-              max={maximumDate}
-              required
-            />
+            <input type="date" id="age" min={minimumDate} max={maximumDate} required />
 
-            <div style={{marginTop: "15px"}} >
-              <input type="checkbox" style={{height: "2em", width: "2em", verticalAlign: "middle"}}/>
+            <div style={{ marginTop: "15px" }}>
+              <input
+                type="checkbox"
+                style={{
+                  height: "2em",
+                  width: "2em",
+                  verticalAlign: "middle",
+                  marginRight: "10px",
+                }}
+              />
               <label htmlFor="checkbox">
-                I agree to these <a href="#" target="_blank">Terms and Conditions</a>.
+                I agree to these{" "}
+                <a
+                  target="_blank"
+                  style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer" }}
+                >
+                  Terms and Conditions
+                </a>
               </label>
             </div>
-
           </div>
           <button className="glow-on-hover create-button" onClick={performCreateUser}>
             Create your EcoDrive account
