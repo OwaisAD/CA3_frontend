@@ -687,6 +687,10 @@ form.search-field-form button:hover {
 
 
 .logo {
+  width: 60px;
+  height: 60px;
+  margin: 30px auto 20px;
+  display: block;
   transition: transform 0.8s ease-in-out;
 }
 

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import NavButton from "./navbar/NavButton";
 import facade from "../facades/apiFacade";
 
+
 function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,6 +13,9 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
   return (
     <nav className="topnav">
       <div className="left-side-navbar">
+
+        <NavButton isLogo/>
+
         {location.pathname !== "/" && (
           <NavButton text="Home" iconClass="fas fa-home" to="/" isEnd />
         )}

@@ -1,19 +1,36 @@
 import { NavLink } from "react-router-dom";
+import Image from "../../images/ecodrive-logo.png";
 
-const NavButton = ({ to, iconClass, text, onClick, isEnd }) => {
-  return (
-    <>
-      {isEnd ? (
-        <NavLink to={to} end onClick={onClick}>
-          <i className={iconClass}></i> {text}
+const NavButton = ({ to, iconClass, text, onClick, isEnd, isLogo }) => {
+
+  const NavElement = (isLogo, isEnd) => {
+    if (isLogo) {
+      return (
+        <NavLink to="/" end>
+          <img
+            src={Image}
+            alt="cinewatch logo"
+            style={{
+              maxWidth: "160px",
+              margin: "30px auto 20px",
+              display: "block",
+            }}
+            className="logo"
+          />
         </NavLink>
-      ) : (
-        <NavLink to={to} onClick={onClick}>
+      );
+    } else if(isEnd) {
+        return (<NavLink to={to} end onClick={onClick}>
           <i className={iconClass}></i> {text}
-        </NavLink>
-      )}
-    </>
-  );
+        </NavLink>)
+    } else {
+      return (<NavLink to={to} onClick={onClick}>
+      <i className={iconClass}></i> {text}
+    </NavLink>)
+    }
+  };
+
+  return NavElement(isLogo, isEnd);
 };
 
 export default NavButton;

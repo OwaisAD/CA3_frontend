@@ -7,12 +7,7 @@ function Home() {
     <>
       <div className="home-header">
         <div className="content">
-          <img
-            src={Image}
-            alt="cinewatch logo"
-            style={{ maxWidth: "180px", margin: "30px auto 20px", display: "block" }}
-            className="logo"
-          />
+         
           <h1>Welcome to EcoDriver</h1>
         </div>
         <Outlet />
