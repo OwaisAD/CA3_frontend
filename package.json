@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "postbuild": "purgecss --css dist/assets/*.css --content dist/index.html dist/assets/*.js --output purgecss/static/css"
   },
   "dependencies": {
     "mdb-react-ui-kit": "^5.0.0",
+    "purgecss": "^5.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-datepicker": "^4.8.0",
