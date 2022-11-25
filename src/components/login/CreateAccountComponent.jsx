@@ -31,6 +31,13 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
       setErrorMsg("Passwords don't match");
       return;
     }
+
+    // this is handled by the backend ??????
+    if(!(loginCredentials.age >= 18 && loginCredentials.age <=120)) {
+      setErrorMsg("Please reenter age......")
+      return;
+    }
+
     createUser(loginCredentials.username, loginCredentials.password, loginCredentials.age);
   };
 
