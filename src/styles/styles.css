@@ -7,40 +7,41 @@ body {
   margin: 0;
   font-family: "Lato", "Roboto", sans-serif;
   background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 .topnav {
-  overflow: hidden;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    98deg,
-    rgba(0, 0, 0, 0.8085828081232493) 0%,
-    rgba(5, 5, 5, 0.14471726190476186) 100%
-  );
-  position: sticky;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
   top: 0;
+  width: 100%;
+  justify-content: space-between;
+  padding: 41px 61px 0px;
+  z-index:1000;
 }
 
 .topnav a {
   float: left;
   display: block;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.826);
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 24px;
+  font-weight: 500;
 }
 
+.topnav a:not(:first-child) {
+  margin: 0px 0px 0px 15px;
+}
+
+
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  color: rgb(255, 255, 255);
+  transition: ease-in-out 0.3s;
 }
 
 .topnav a.active {
-  background-color: #2196f3;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .topnav .login-container {
@@ -55,21 +56,6 @@ body {
   width: 120px;
 }
 
-.topnav .login-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  color: white;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  background-color: inherit;
-}
-
-.topnav .login-container button:hover {
-  background-color: #45a049;
-}
 
 @media screen and (max-width: 600px) {
   .topnav .login-container {
@@ -658,58 +644,44 @@ form.search-field-form button:hover {
 }
 
 /*STYLING HOME PAGE*/
+
 .home-header {
-  height: 60vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25px;
-  background-color: #21f33369;
+  background: url("/src/images/home_background.jpg") no-repeat center;
+  background-size: cover;
+
 }
 
-.bg {
-  animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-
-.bg2 {
-  animation-direction: alternate-reverse;
-  animation-duration: 4s;
-}
-
-.bg3 {
-  animation-duration: 5s;
+.home-header h1 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 116px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 .content {
-  background-color: rgba(255, 255, 255, 0.126);
-  border-radius: 3em;
-  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
-  padding: 0px 40px;
-  text-align: center;
-}
-.home-header h1 {
-  color: white;
-  font-family: monospace;
-  font-size: 45px;
+  position: fixed;
+  z-index: 1000;
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(25%);
-  }
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 35, 82, 0.4);
+  width: 100%;
+  height:100%;
+  z-index:999;
+  top: 0;
+  left: 0;
 }
+
 
 .logo {
   transition: transform 0.8s ease-in-out;

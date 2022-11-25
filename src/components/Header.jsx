@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "../styles/styles.css";
-import Button from "./button/Button";
 import LoggedInNavBar from "./LoggedInNavBar";
 import { useNavigate } from "react-router-dom";
 import NavButton from "./navbar/NavLink";
@@ -11,31 +10,36 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
   const location = useLocation();
 
   return (
-    <nav className="topnav">
-      {location.pathname !== "/" && <NavButton text="Home" iconClass="fas fa-home" to="/" isEnd/>}
+     <nav className="topnav">
+      <div className="left-side-navbar">
+        {location.pathname !== "/" && (
+          <NavButton text="Home" iconClass="fas fa-home" to="/" isEnd />
+        )}
 
-      <NavButton text="About" iconClass="fas fa-seedling" to="/about" />
+        <NavButton text="About" iconClass="fas fa-seedling" to="/about" />
 
-      {loggedIn && (
-        <>
-          <NavButton text="My Trips" iconClass="fas fa-car" to="/mytrips" />
-        </>
-      )}
+        {loggedIn && (
+          <>
+            <NavButton text="My Trips" iconClass="fas fa-car" to="/mytrips" />
+          </>
+        )}
+      </div>
 
+        <div className="right-side-navbar">
       {!loggedIn ? (
-        <div className="login-container">
-          
-          <NavButton text="Login" onClick={() => {
+          <NavButton
+            text="Login"
+            onClick={() => {
               setCreateAccountClicked(false);
-            }} to="/login"/>
-
-    
-        </div>
+            }}
+            to="/login"
+          />
       ) : (
         <>
           <LoggedInNavBar setLoggedIn={setLoggedIn} />
         </>
       )}
+      </div>
     </nav>
   );
 }
