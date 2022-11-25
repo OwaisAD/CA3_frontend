@@ -10,11 +10,6 @@ const NavButton = ({ to, iconClass, text, onClick, isEnd, isLogo }) => {
           <img
             src={Image}
             alt="cinewatch logo"
-            style={{
-              maxWidth: "160px",
-              margin: "30px auto 20px",
-              display: "block",
-            }}
             className="logo"
           />
         </NavLink>

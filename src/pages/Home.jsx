@@ -7,7 +7,6 @@ function Home() {
     <>
       <div className="home-header">
         <div className="content">
-         
           <h1>Welcome to EcoDriver</h1>
         </div>
         <Outlet />
