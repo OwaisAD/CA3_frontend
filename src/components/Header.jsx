@@ -1,10 +1,13 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "../styles/styles.css";
+import Button from "./button/Button";
 import LoggedInNavBar from "./LoggedInNavBar";
-import LoginButton from "./LoginButton";
+import { useNavigate } from "react-router-dom";
 
 function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked }) {
+  const navigate = useNavigate();
+
   return (
     <nav className="topnav">
       <NavLink to="/" end>
@@ -24,7 +27,10 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
       )}
 
       {!loggedIn ? (
-        <LoginButton setCreateAccountClicked={setCreateAccountClicked} />
+        <Button text="Login"  onClick={() => {
+          setCreateAccountClicked(false);
+          navigate("login");
+        }}/>
       ) : (
         <>
           <LoggedInNavBar setLoggedIn={setLoggedIn} />

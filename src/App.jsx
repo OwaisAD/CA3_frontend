@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./components/Home";
-import About from "./components/About";
-import Error from "./components/Error";
-import Profile from "./components/Profile";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Error from "./pages/404";
+import Profile from "./pages/Profile";
 import Login from "./components/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Register from "./components/Registration";
-import Trips from "./components/Trips";
+import Trips from "./pages/Trips";
 import facade from "./facades/apiFacade";
 
 const App = () => {

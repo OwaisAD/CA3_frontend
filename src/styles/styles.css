@@ -6,15 +6,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Lato", "Roboto", sans-serif;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    318deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 15, 125, 1) 23%,
-    rgba(9, 9, 121, 1) 45%,
-    rgba(0, 212, 255, 1) 83%,
-    rgba(227, 229, 237, 1) 100%
-  );
+  background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
