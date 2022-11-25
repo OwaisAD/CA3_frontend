@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import Image from "../images/ecodrive-logo.png";
+import { Outlet } from "react-router-dom";
 
 function Home() {
   return (

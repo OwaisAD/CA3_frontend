@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -16,12 +16,6 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(loggedInInitial);
   const [errorMsg, setErrorMsg] = useState("");
   const [createAccountClicked, setCreateAccountClicked] = useState(false);
-  const [addedMovieToWatchlist, setAddedMovieToWatchlist] = useState(false);
-  const [dataFromServer, setDataFromServer] = useState([]);
-
-  const initialState = () => {
-    window.sessionStorage.getItem("movie");
-  };
 
   return (
     <>
@@ -43,7 +37,6 @@ const App = () => {
               <Profile
                 loggedIn={loggedIn}
                 setLoggedIn={setLoggedIn}
-                setAddedMovieToWatchlist={setAddedMovieToWatchlist}
               />
             }
           />

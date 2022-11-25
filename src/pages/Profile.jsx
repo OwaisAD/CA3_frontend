@@ -1,30 +1,29 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import facade from "../facades/apiFacade";
 import Unauthorized from "../components/Unauthorized";
+import PageWrapper from "../components/wrapper/PageWrapper";
 
-const Profile = ({ loggedIn, setLoggedIn, addedMovieToWatchlist }) => {
+const Profile = ({ loggedIn, setLoggedIn }) => {
   const [dataFromServer, setDataFromServer] = useState("Loading...");
   // NEED TO HAVE A STATE THAT CHECKS WETHER A USER ADDED A MOVIE TO WATCHLIST, IF YES, THEN USEEFFECT SHOULD RELY ON THAT VARIABLE
 
   useEffect(() => {
-    // her skal jeg tjekke for rollen og køre den rigitge fetch metode alt efter rollen
     let isLoggedIn = facade.loggedIn();
     if (isLoggedIn) {
       setLoggedIn(true);
       facade.fetchData().then((data) => {
         setDataFromServer(data);
-        console.log(dataFromServer);
       });
     }
-  }, [addedMovieToWatchlist]);
+  }, []);
 
   return (
-    <>
+    <PageWrapper>
       {!loggedIn ? (
         <Unauthorized />
       ) : (
         <>
-          <div class="nine">
+          <div className="nine">
             <h1>
               Profile <span style={{ color: "white" }}>Change your personal information</span>{" "}
             </h1>
@@ -84,7 +83,7 @@ const Profile = ({ loggedIn, setLoggedIn, addedMovieToWatchlist }) => {
           </div>
         </>
       )}
-    </>
+    </PageWrapper>
   );
 };
 

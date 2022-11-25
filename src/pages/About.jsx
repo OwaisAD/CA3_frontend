@@ -1,6 +1,7 @@
+import React from "react";
 import PageWrapper from "../components/wrapper/PageWrapper";
 
-function About({ movieData, setMovieData }) {
+function About() {
   return (
     <PageWrapper>
       <div className="nine">

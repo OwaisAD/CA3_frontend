@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import NavButton from "./navbar/NavButton";
 import facade from "../facades/apiFacade";
 
-function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked }) {
+function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -34,7 +34,7 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
                     style={{ paddingRight: "10px", cursor: "pointer" }}
                     onClick={() => navigate("/profile")}
                   >
-                    Hello, {facade.getUsername()} <i class="fas fa-user-circle"></i>
+                    Hello, {facade.getUsername()} <i className="fas fa-user-circle"></i>
                   </NavLink>
                   <NavButton
                     text="Sign Out"
@@ -64,7 +64,6 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
           <div className="left-side-navbar">
             <NavButton isLogo />
 
-            {pathname !== "/" && <NavButton text="Home" iconClass="fas fa-home" to="/" isEnd />}
 
             {loggedIn && (
               <>
@@ -86,12 +85,12 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
             ) : (
               <>
                 <div className="btn-login">
-                  <NavLink
+                  <a
                     style={{ paddingRight: "10px", cursor: "pointer" }}
                     onClick={() => navigate("/profile")}
                   >
-                    Hello, {facade.getUsername()} <i class="fas fa-user-circle"></i>
-                  </NavLink>
+                    Hello, {facade.getUsername()} <i className="fas fa-user-circle"></i>
+                  </a>
                   <NavButton
                     text="Sign Out"
                     onClick={() => {
