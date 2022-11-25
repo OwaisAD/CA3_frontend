@@ -27,10 +27,12 @@ function Header({ loggedIn, setErrorMsg, setLoggedIn, setCreateAccountClicked })
       )}
 
       {!loggedIn ? (
-        <Button text="Login"  onClick={() => {
-          setCreateAccountClicked(false);
-          navigate("login");
-        }}/>
+        <div className="login-container">
+          <Button text="Login"  onClick={() => {
+            setCreateAccountClicked(false);
+            navigate("/login");
+          }} isHeaderLogin={true}/>
+        </div>
       ) : (
         <>
           <LoggedInNavBar setLoggedIn={setLoggedIn} />

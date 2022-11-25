@@ -107,7 +107,7 @@ select {
 
 /*glow effect on button*/
 .glow-on-hover {
-  width: 65px;
+  width: 100%;
   height: 35px;
   border: none;
   outline: none;

@@ -1,10 +1,13 @@
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, isLogin, isHeaderLogin}) => {
+    
+    const isLoginButton = isLogin ? "login-button" : ""
+    const isHeaderLoginButton = isHeaderLogin ? "login-container" : ""
+
+
   return (
-    <div className="login-container">
-      <button className="glow-on-hover" onClick={onClick}>
+      <button className={`glow-on-hover ${isLoginButton} ${isHeaderLoginButton}`} onClick={onClick}>
         {text}
       </button>
-    </div>
   );
 };
 
