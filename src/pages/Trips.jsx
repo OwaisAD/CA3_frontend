@@ -1,9 +1,11 @@
+import PageWrapper from "../components/wrapper/PageWrapper"
+
 const Trips = () => {
   return (
-    <div>
+    <PageWrapper>
       <p>hi</p>
-    </div>
-  )
-}
+    </PageWrapper>
+  );
+};
 
-export default Trips
+export default Trips;

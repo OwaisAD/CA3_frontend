@@ -18,6 +18,8 @@ const CreateAccountComponent = ({
     age: "",
   });
   //const [error, setError] = useState({ username: "", password: "", passwordRepeated: "", age: "" }) //should be used to handling the form errors....
+
+  // the age from input date converter should be in a utils js class or jsx component for the date picker
   var today = new Date();
   var dd = String(today.getDate());
   var mm = String(today.getMonth() + 1); //January is 0!
@@ -86,7 +88,7 @@ const CreateAccountComponent = ({
   };
 
   return (
-    <div style={{ marginBottom: "50px" }}>
+    <div>
       <div className="create-user-component-container">
         <div className="title">
           <h2>Create account</h2>

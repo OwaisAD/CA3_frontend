@@ -5,11 +5,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Error from "./pages/404";
 import Profile from "./pages/Profile";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
-import Register from "./components/Registration";
+import Register from "./pages/Registration";
 import Trips from "./pages/Trips";
-import facade from "./facades/apiFacade";
 
 const App = () => {
   let loggedInInitial = window.localStorage.getItem("isLoggedIn");
