@@ -7,11 +7,21 @@ import { DatePicker, getAge } from "../DatePicker";
 const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
+    email: "",
     password: "",
     passwordRepeated: "",
     age: "",
+    termsAndConditions: false,
   });
 
   // the age from input date converter should be in a utils js class or jsx component for the date picker
@@ -19,11 +29,18 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
     evt.preventDefault();
     if (
       loginCredentials.username === "" ||
+      loginCredentials.email === "" ||
       loginCredentials.password === "" ||
       loginCredentials.passwordRepeated === "" ||
-      loginCredentials.age === ""
+      loginCredentials.age === "" ||
+      loginCredentials.termsAndConditions === ""
     ) {
       setErrorMsg("Please fill out the form");
+      return;
+    }
+
+    if (!validateEmail(loginCredentials.email)) {
+      setErrorMsg("Incorrect email");
       return;
     }
 
@@ -33,8 +50,13 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
     }
 
     // this is handled by the backend ??????
-    if(!(loginCredentials.age >= 18 && loginCredentials.age <=120)) {
-      setErrorMsg("Please reenter age......")
+    if (!(loginCredentials.age >= 18 && loginCredentials.age <= 120)) {
+      setErrorMsg("Please reenter age......");
+      return;
+    }
+
+    if (loginCredentials.termsAndConditions === false) {
+      setErrorMsg("Please accept the terms and conditions");
       return;
     }
 
@@ -56,7 +78,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   const onChange = (evt) => {
     if (evt.target.id === "age") {
       let age = getAge(evt.target.value);
-      console.log("calculated age:", age)
+      console.log("calculated age:", age);
       if (age >= 18 && age <= 125) {
         setLoginCredentials({
           ...loginCredentials,
@@ -64,6 +86,12 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
         });
         console.log(loginCredentials);
       }
+    } else if (evt.target.id === "termsAndConditions") {
+      setLoginCredentials({
+        ...loginCredentials,
+        [evt.target.id]: evt.target.checked ? false : true,
+      });
+      console.log(loginCredentials);
     } else {
       setLoginCredentials({
         ...loginCredentials,
@@ -146,11 +174,12 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
               Please enter your birthdate{" "}
             </label>
 
-            <DatePicker/>
+            <DatePicker />
 
             <div style={{ marginTop: "15px" }}>
               <input
                 type="checkbox"
+                id="termsAndConditions"
                 style={{
                   height: "2em",
                   width: "2em",
