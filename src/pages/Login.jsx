@@ -1,13 +1,8 @@
 import React from "react";
 import LoginComponent from "../components/login/LoginComponent";
-import PageWrapper from "../components/wrapper/PageWrapper";
 
 const Login = ({ setLoggedIn, setErrorMsg }) => {
-  return (
-    <PageWrapper>
-        <LoginComponent setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg} />
-    </PageWrapper>
-  );
+  return <LoginComponent setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg} />;
 };
 
 export default Login;

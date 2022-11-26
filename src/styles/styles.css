@@ -24,7 +24,7 @@ body {
   top: 0;
   width: 100%;
   justify-content: space-between;
-  padding: 41px 61px 0;
+  padding: 20px 61px 0;
   z-index: 1000;
   align-items: center;
 }
@@ -333,7 +333,8 @@ select {
 .profile-inner-container:nth-child(1) {
   width: 300px;
 }
+
 .page-wrapper {
-  margin-top: 100px;
+  margin-top: 125px;
   text-align: center;
 }

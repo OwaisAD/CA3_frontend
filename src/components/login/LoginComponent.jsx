@@ -41,44 +41,45 @@ const LoginComponent = ({
   };
 
   return (
-    <div className="login-component-container">
-      <div className="title">
-        <h2>Login</h2>
-        <p>Please login to continue</p>
+    <div className="login-container">
+      <div className="login-component-left-side"></div>
+      <div className="login-component-right-side">
+        <div className="login-component-container">
+          <div className="title">
+            <h2>Login</h2>
+            <p>Please login to continue</p>
+          </div>
+          <form onChange={onChange}>
+            <label
+              htmlFor="username"
+              style={{ float: "left", fontSize: "16px", fontWeight: "lighter", marginLeft: "1px" }}
+            >
+              Username
+            </label>
+            <input type="text" placeholder="Enter username" id="username" required />{" "}
+            <label
+              htmlFor="password"
+              style={{ float: "left", fontSize: "16px", fontWeight: "lighter", marginLeft: "1px" }}
+            >
+              Password
+            </label>
+            <input type="password" placeholder="Enter password" id="password" required />
+            <div style={{ marginTop: "10px" }}>
+              <a style={{ color: "#0000EE", cursor: "pointer" }}>Forgot your password?</a>
+            </div>
+            <div style={{ width: "100%", marginTop: "20px" }}>
+              <Button text="Sign in" onClick={performLogin} isLogin={true} />
+            </div>
+          </form>
+
+          <p style={{ padding: "5px 0px" }}>Don't have an account?</p>
+          <a style={{ color: "#0000EE", cursor: "pointer" }} onClick={() => navigate("/register")}>
+            Sign up here
+          </a>
+
+          <h3 style={{ color: "red" }}>{errorMsgLogin}</h3>
+        </div>
       </div>
-      <form onChange={onChange}>
-        <label
-          htmlFor="username"
-          style={{ float: "left", fontSize: "16px", fontWeight: "lighter", marginLeft: "1px" }}
-        >
-          Username
-        </label>
-        <input type="text" placeholder="Enter username" id="username" required />{" "}
-        <label
-          htmlFor="password"
-          style={{ float: "left", fontSize: "16px", fontWeight: "lighter", marginLeft: "1px" }}
-        >
-          Password
-        </label>
-        <input type="password" placeholder="Enter password" id="password" required />
-
-        <div style={{marginTop: "10px"}}>
-        <a style={{ color: "#0000EE", cursor: "pointer"}}>Forgot your password?</a>
-        </div>
-
-
-        <div style={{width: "100%", marginTop: "20px"}}>
-          <Button text="Sign in" onClick={performLogin} isLogin={true}/>
-        </div>
-
-      </form>
-
-      <p style={{ padding: "5px 0px" }}>Don't have an account?</p>
-      <a style={{ color: "#0000EE", cursor: "pointer" }} onClick={() => navigate("/register")}>
-        Sign up here
-      </a>
-
-      <h3 style={{ color: "red" }}>{errorMsgLogin}</h3>
     </div>
   );
 };
