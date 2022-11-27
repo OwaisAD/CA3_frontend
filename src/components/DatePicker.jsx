@@ -11,7 +11,7 @@ const getAge = (dateString) => {
   return age;
 };
 
-const DatePicker = () => {
+const DatePicker = ({onChange}) => {
   var today = new Date();
   var dd = String(today.getDate());
   var mm = String(today.getMonth() + 1); //January is 0!
@@ -23,7 +23,7 @@ const DatePicker = () => {
 
   return (
     <>
-      <input type="date" id="age" min={minimumDate} max={maximumDate} required />
+      <input type="date" id="age" min={minimumDate} max={maximumDate} required onChange={onChange}/>
     </>
   );
 };

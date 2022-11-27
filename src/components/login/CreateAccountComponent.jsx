@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import facade from "../../facades/apiFacade";
@@ -7,14 +7,6 @@ import background from "../../images/create_user_background.jpg";
 
 const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   const navigate = useNavigate();
-
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
 
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
@@ -25,6 +17,19 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
     termsAndConditions: false,
   });
 
+  useEffect(() => {
+    console.log(loginCredentials);
+  }, [loginCredentials])
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+ 
   // the age from input date converter should be in a utils js class or jsx component for the date picker
   const performCreateUser = (evt) => {
     evt.preventDefault();
@@ -33,8 +38,8 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
       loginCredentials.email === "" ||
       loginCredentials.password === "" ||
       loginCredentials.passwordRepeated === "" ||
-      loginCredentials.age === "" ||
-      loginCredentials.termsAndConditions === ""
+      loginCredentials.age === undefined ||
+      loginCredentials.termsAndConditions === false
     ) {
       setErrorMsg("Please fill out the form");
       return;
@@ -50,12 +55,6 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
       return;
     }
 
-    // this is handled by the backend ??????
-    if (!(loginCredentials.age >= 18 && loginCredentials.age <= 120)) {
-      setErrorMsg("Please reenter age......");
-      return;
-    }
-
     if (loginCredentials.termsAndConditions === false) {
       setErrorMsg("Please accept the terms and conditions");
       return;
@@ -64,7 +63,9 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
     createUser(loginCredentials.username, loginCredentials.password, loginCredentials.age);
   };
 
+  // this should be changed
   const createUser = (user, pass, age) => {
+    setErrorMsg("")
     facade
       .createUser(user, pass, age)
       .then(() => {
@@ -85,12 +86,11 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
           ...loginCredentials,
           [evt.target.id]: age,
         });
-        console.log(loginCredentials);
       }
     } else if (evt.target.id === "termsAndConditions") {
       setLoginCredentials({
         ...loginCredentials,
-        [evt.target.id]: evt.target.checked ? false : true,
+        [evt.target.id]: evt.target.checked === true ? true : false,
       });
       console.log(loginCredentials);
     } else {
@@ -99,6 +99,10 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
         [evt.target.id]: evt.target.value,
       });
     }
+    // setLoginCredentials({
+    //   ...loginCredentials,
+    //   [evt.target.id]: evt.target.value,
+    // })
   };
 
   return (
@@ -113,7 +117,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             <h2>Create an account</h2>
             <p>Please fill out the following fields</p>
           </div>
-          <form autoComplete="off" onChange={onChange}>
+          <form autoComplete="off">
             <label
               htmlFor="username"
               style={{
@@ -125,7 +129,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             >
               Username
             </label>
-            <input type="text" placeholder="Enter username" id="username" required />{" "}
+            <input type="text" placeholder="Enter username" id="username" required onChange={onChange}/>{" "}
             <label
               htmlFor="email"
               style={{
@@ -137,7 +141,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             >
               Email
             </label>
-            <input type="email" placeholder="Enter email" id="email" required />
+            <input type="email" placeholder="Enter email" id="email" required onChange={onChange}/>
             <label
               htmlFor="password"
               style={{
@@ -155,6 +159,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
               id="password"
               required
               autoComplete="new-password"
+              onChange={onChange}
             />
             <label
               htmlFor="password"
@@ -172,6 +177,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
               placeholder="Enter password again"
               id="passwordRepeated"
               required
+              onChange={onChange}
             />
             <div>
               <label
@@ -186,24 +192,25 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
                 Please enter your birthdate{" "}
               </label>
 
-              <DatePicker />
+              <DatePicker onChange={onChange}/>
 
               <div style={{ marginTop: "15px", textAlign: "center" }}>
                 <input
                   type="checkbox"
                   id="termsAndConditions"
                   style={{
-                    height: "2em",
-                    width: "2em",
+                    height: "1.5em",
+                    width: "1.5em",
                     verticalAlign: "middle",
                     marginRight: "10px",
                   }}
+                  onChange={onChange}
                 />
-                <label htmlFor="checkbox">
+                <label htmlFor="checkbox" style={{fontSize: "14px"}}>
                   I agree to these{" "}
                   <a
                     target="_blank"
-                    style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer" }}
+                    style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer"}}
                   >
                     Terms and Conditions
                   </a>
@@ -222,7 +229,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             </a>
           </p>
 
-          <h3 style={{ color: "red" }}>{errorMsg}</h3>
+          <h3 style={{ color: "red", textAlign: "center" }}>{errorMsg}</h3>
         </div>
       </div>
     </div>
