@@ -10,6 +10,7 @@ function About() {
           </h1>
         </div>
       </div>
+      <div className="overlay-about"></div>
     </>
   );
 }
