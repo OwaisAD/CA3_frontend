@@ -1,6 +1,6 @@
-import { Children } from "react";
+import React from "react";
 
-const PageWrapper = ({children}) => {
+const PageWrapper = ({ children }) => {
   return <div className="page-wrapper">{children}</div>;
 };
 

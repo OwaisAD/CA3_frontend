@@ -104,7 +104,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   return (
     <div className="create-user-container">
       <div className="create-user-left-side">
-        <img style={{objectFit: "cover"}} src={background} alt="img" />
+        <img style={{ objectFit: "cover" }} src={background} alt="img" />
       </div>
 
       <div className="create-user-right-side">
@@ -113,7 +113,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             <h2>Create an account</h2>
             <p>Please fill out the following fields</p>
           </div>
-          <form onChange={onChange}>
+          <form autoComplete="off" onChange={onChange}>
             <label
               htmlFor="username"
               style={{
@@ -149,7 +149,13 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             >
               Password
             </label>
-            <input type="password" placeholder="Enter password" id="password" required />
+            <input
+              type="password"
+              placeholder="Enter password"
+              id="password"
+              required
+              autoComplete="new-password"
+            />
             <label
               htmlFor="password"
               style={{
@@ -209,7 +215,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             </button>
           </form>
 
-          <p style={{textAlign: "center"}}>
+          <p style={{ textAlign: "center" }}>
             Already have an account?{" "}
             <a style={{ color: "#0000EE", cursor: "pointer" }} onClick={() => navigate("/login")}>
               Sign in

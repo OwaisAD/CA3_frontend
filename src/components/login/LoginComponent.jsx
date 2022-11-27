@@ -67,8 +67,8 @@ const LoginComponent = ({
               Password
             </label>
             <input type="password" placeholder="Enter password" id="password" required />
-            <div style={{ marginTop: "10px" }}>
-              <a style={{ color: "#0000EE", cursor: "pointer", float: "right", fontSize: "14px" }}>
+            <div style={{ marginBottom: "40px" }}>
+              <a style={{ color: "#0000EE", cursor: "pointer", float: "right", fontSize: "12px"}}>
                 Forgot your password?
               </a>
             </div>
