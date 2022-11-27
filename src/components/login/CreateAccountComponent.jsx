@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import facade from "../../facades/apiFacade";
 import { DatePicker, getAge } from "../DatePicker";
-import background from "../../images/create_user_background.jpg";
 
 const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   const navigate = useNavigate();
@@ -17,9 +16,9 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
     termsAndConditions: false,
   });
 
-  useEffect(() => {
-    console.log(loginCredentials);
-  }, [loginCredentials])
+  // useEffect(() => {
+  //   console.log(loginCredentials);
+  // }, [loginCredentials])
 
   const validateEmail = (email) => {
     return String(email)
@@ -29,7 +28,6 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
       );
   };
 
- 
   // the age from input date converter should be in a utils js class or jsx component for the date picker
   const performCreateUser = (evt) => {
     evt.preventDefault();
@@ -65,7 +63,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
 
   // this should be changed
   const createUser = (user, pass, age) => {
-    setErrorMsg("")
+    setErrorMsg("");
     facade
       .createUser(user, pass, age)
       .then(() => {
@@ -107,9 +105,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
 
   return (
     <div className="create-user-container">
-      <div className="create-user-left-side">
-        <img style={{ objectFit: "cover" }} src={background} alt="img" />
-      </div>
+      <div className="create-user-left-side"></div>
 
       <div className="create-user-right-side">
         <div className="create-user-component-container">
@@ -129,7 +125,13 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             >
               Username
             </label>
-            <input type="text" placeholder="Enter username" id="username" required onChange={onChange}/>{" "}
+            <input
+              type="text"
+              placeholder="Enter username"
+              id="username"
+              required
+              onChange={onChange}
+            />{" "}
             <label
               htmlFor="email"
               style={{
@@ -141,7 +143,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
             >
               Email
             </label>
-            <input type="email" placeholder="Enter email" id="email" required onChange={onChange}/>
+            <input type="email" placeholder="Enter email" id="email" required onChange={onChange} />
             <label
               htmlFor="password"
               style={{
@@ -192,7 +194,7 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
                 Please enter your birthdate{" "}
               </label>
 
-              <DatePicker onChange={onChange}/>
+              <DatePicker onChange={onChange} />
 
               <div style={{ marginTop: "15px", textAlign: "center" }}>
                 <input
@@ -206,11 +208,11 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
                   }}
                   onChange={onChange}
                 />
-                <label htmlFor="checkbox" style={{fontSize: "14px"}}>
+                <label htmlFor="checkbox" style={{ fontSize: "14px" }}>
                   I agree to these{" "}
                   <a
                     target="_blank"
-                    style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer"}}
+                    style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer" }}
                   >
                     Terms and Conditions
                   </a>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import facade from "../../facades/apiFacade";
 import Button from "../button/Button";
-import background from "../../images/login_background.jpg";
 
 const LoginComponent = ({
   setLoggedIn,
@@ -43,9 +42,7 @@ const LoginComponent = ({
 
   return (
     <div className="login-container">
-      <div className="login-component-left-side">
-        <img style={{objectFit: "cover"}} src={background} alt="img" />
-      </div>
+      <div className="login-component-left-side"></div>
       <div className="login-component-right-side">
         <div className="login-component-container">
           <div className="title">
@@ -68,7 +65,7 @@ const LoginComponent = ({
             </label>
             <input type="password" placeholder="Enter password" id="password" required />
             <div style={{ marginBottom: "40px" }}>
-              <a style={{ color: "#0000EE", cursor: "pointer", float: "right", fontSize: "12px"}}>
+              <a style={{ color: "#0000EE", cursor: "pointer", float: "right", fontSize: "12px" }}>
                 Forgot your password?
               </a>
             </div>
