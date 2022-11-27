@@ -1,3 +1,5 @@
+import React from "react";
+
 const Button = ({ text, onClick, isLogin, isHeaderLogin}) => {
     
     const isLoginButton = isLogin ? "login-button" : ""

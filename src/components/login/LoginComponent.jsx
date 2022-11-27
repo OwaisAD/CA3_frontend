@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import facade from "../../facades/apiFacade";
 import Button from "../button/Button";
+import background from "../../images/login_background.jpg";
 
 const LoginComponent = ({
   setLoggedIn,
@@ -42,7 +43,9 @@ const LoginComponent = ({
 
   return (
     <div className="login-container">
-      <div className="login-component-left-side"></div>
+      <div className="login-component-left-side">
+        <img style={{objectFit: "cover"}} src={background} alt="img" />
+      </div>
       <div className="login-component-right-side">
         <div className="login-component-container">
           <div className="title">
@@ -65,17 +68,24 @@ const LoginComponent = ({
             </label>
             <input type="password" placeholder="Enter password" id="password" required />
             <div style={{ marginTop: "10px" }}>
-              <a style={{ color: "#0000EE", cursor: "pointer" }}>Forgot your password?</a>
+              <a style={{ color: "#0000EE", cursor: "pointer", float: "right", fontSize: "14px" }}>
+                Forgot your password?
+              </a>
             </div>
             <div style={{ width: "100%", marginTop: "20px" }}>
               <Button text="Sign in" onClick={performLogin} isLogin={true} />
             </div>
           </form>
 
-          <p style={{ padding: "5px 0px" }}>Don't have an account?</p>
-          <a style={{ color: "#0000EE", cursor: "pointer" }} onClick={() => navigate("/register")}>
-            Sign up here
-          </a>
+          <p style={{ padding: "5px 0px", textAlign: "center" }}>
+            {"Don't have an account? "}
+            <a
+              style={{ color: "#0000EE", cursor: "pointer", textAlign: "center" }}
+              onClick={() => navigate("/register")}
+            >
+              Sign up
+            </a>
+          </p>
 
           <h3 style={{ color: "red" }}>{errorMsgLogin}</h3>
         </div>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import facade from "../../facades/apiFacade";
 import { DatePicker, getAge } from "../DatePicker";
+import background from "../../images/create_user_background.jpg";
 
 const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   const navigate = useNavigate();
@@ -101,69 +102,56 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
   };
 
   return (
-    <div>
-      <div className="create-user-component-container">
-        <div className="title">
-          <h2>Create account</h2>
-          <p>Please fill out the following fields</p>
-        </div>
-        <form onChange={onChange}>
-          <label
-            htmlFor="username"
-            style={{
-              float: "left",
-              fontSize: "16px",
-              fontWeight: "lighter",
-              marginLeft: "1px",
-            }}
-          >
-            Username
-          </label>
-          <input type="text" placeholder="Enter username" id="username" required />{" "}
-          <label
-            htmlFor="email"
-            style={{
-              float: "left",
-              fontSize: "16px",
-              fontWeight: "lighter",
-              marginLeft: "1px",
-            }}
-          >
-            Email
-          </label>
-          <input type="email" placeholder="Enter email" id="email" required />
-          <label
-            htmlFor="password"
-            style={{
-              float: "left",
-              fontSize: "16px",
-              fontWeight: "lighter",
-              marginLeft: "1px",
-            }}
-          >
-            Password
-          </label>
-          <input type="password" placeholder="Enter password" id="password" required />
-          <label
-            htmlFor="password"
-            style={{
-              float: "left",
-              fontSize: "16px",
-              fontWeight: "lighter",
-              marginLeft: "2px",
-            }}
-          >
-            Confirm password
-          </label>
-          <input
-            type="password"
-            placeholder="Enter password again"
-            id="passwordRepeated"
-            required
-          />
-          <div>
+    <div className="create-user-container">
+      <div className="create-user-left-side">
+        <img style={{objectFit: "cover"}} src={background} alt="img" />
+      </div>
+
+      <div className="create-user-right-side">
+        <div className="create-user-component-container">
+          <div className="title">
+            <h2>Create an account</h2>
+            <p>Please fill out the following fields</p>
+          </div>
+          <form onChange={onChange}>
             <label
-              htmlFor="age"
+              htmlFor="username"
+              style={{
+                float: "left",
+                fontSize: "16px",
+                fontWeight: "lighter",
+                marginLeft: "1px",
+              }}
+            >
+              Username
+            </label>
+            <input type="text" placeholder="Enter username" id="username" required />{" "}
+            <label
+              htmlFor="email"
+              style={{
+                float: "left",
+                fontSize: "16px",
+                fontWeight: "lighter",
+                marginLeft: "1px",
+              }}
+            >
+              Email
+            </label>
+            <input type="email" placeholder="Enter email" id="email" required />
+            <label
+              htmlFor="password"
+              style={{
+                float: "left",
+                fontSize: "16px",
+                fontWeight: "lighter",
+                marginLeft: "1px",
+              }}
+            >
+              Password
+            </label>
+            <input type="password" placeholder="Enter password" id="password" required />
+            <label
+              htmlFor="password"
               style={{
                 float: "left",
                 fontSize: "16px",
@@ -171,44 +159,65 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
                 marginLeft: "2px",
               }}
             >
-              Please enter your birthdate{" "}
+              Confirm password
             </label>
-
-            <DatePicker />
-
-            <div style={{ marginTop: "15px" }}>
-              <input
-                type="checkbox"
-                id="termsAndConditions"
+            <input
+              type="password"
+              placeholder="Enter password again"
+              id="passwordRepeated"
+              required
+            />
+            <div>
+              <label
+                htmlFor="age"
                 style={{
-                  height: "2em",
-                  width: "2em",
-                  verticalAlign: "middle",
-                  marginRight: "10px",
+                  float: "left",
+                  fontSize: "16px",
+                  fontWeight: "lighter",
+                  marginLeft: "2px",
                 }}
-              />
-              <label htmlFor="checkbox">
-                I agree to these{" "}
-                <a
-                  target="_blank"
-                  style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer" }}
-                >
-                  Terms and Conditions
-                </a>
+              >
+                Please enter your birthdate{" "}
               </label>
+
+              <DatePicker />
+
+              <div style={{ marginTop: "15px", textAlign: "center" }}>
+                <input
+                  type="checkbox"
+                  id="termsAndConditions"
+                  style={{
+                    height: "2em",
+                    width: "2em",
+                    verticalAlign: "middle",
+                    marginRight: "10px",
+                  }}
+                />
+                <label htmlFor="checkbox">
+                  I agree to these{" "}
+                  <a
+                    target="_blank"
+                    style={{ textDecoration: "none", color: "#0000EE", cursor: "pointer" }}
+                  >
+                    Terms and Conditions
+                  </a>
+                </label>
+              </div>
             </div>
-          </div>
-          <button className="glow-on-hover create-button" onClick={performCreateUser}>
-            Create your EcoDrive account
-          </button>
-        </form>
+            <button className="glow-on-hover create-button" onClick={performCreateUser}>
+              Create your EcoDrive account
+            </button>
+          </form>
 
-        <p>Already have an account?</p>
-        <a style={{ color: "#0000EE", cursor: "pointer" }} onClick={() => navigate("/login")}>
-          Log in here
-        </a>
+          <p style={{textAlign: "center"}}>
+            Already have an account?{" "}
+            <a style={{ color: "#0000EE", cursor: "pointer" }} onClick={() => navigate("/login")}>
+              Sign in
+            </a>
+          </p>
 
-        <h3 style={{ color: "red" }}>{errorMsg}</h3>
+          <h3 style={{ color: "red" }}>{errorMsg}</h3>
+        </div>
       </div>
     </div>
   );
