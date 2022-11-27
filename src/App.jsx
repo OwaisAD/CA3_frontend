@@ -63,7 +63,7 @@ const App = () => {
         />
 
         <Route path="error" element={<Error errorMsg={errorMsg} />} />
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </>
   );
