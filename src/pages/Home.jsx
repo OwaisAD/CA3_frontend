@@ -6,7 +6,7 @@ function Home() {
     <>
       <div className="home-header">
         <div className="content">
-          <h1>Share A(nd) Car(e) for our planet</h1>
+          <h1>Share A(nd) Car(e) <br /> for our planet</h1>
         </div>
         <Outlet />
       </div>
