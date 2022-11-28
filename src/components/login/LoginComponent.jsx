@@ -29,7 +29,11 @@ const LoginComponent = ({
         navigate("/mytrips");
       })
       .catch((err) => {
-        err.fullError.then((e) => setErrorMsgLogin(e.message));
+        if (err.status) {
+          err.fullError.then((e) => setErrorMsgLogin(e.message));
+        } else {
+          setErrorMsgLogin("Network error");
+        }
       });
   };
 

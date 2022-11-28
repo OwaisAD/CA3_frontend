@@ -25,6 +25,13 @@ body {
   display: flex;
   align-items: center;
 }
+
+.right-side-navbar {
+  display: flex;
+  align-items: center;
+}
+
+
 .topnav a {
   float: left;
   display: block;
@@ -34,10 +41,9 @@ body {
   font-size: 24px;
   font-weight: 800;
   transition: 0.4s;
+  padding-left: 20px;
 }
-.topnav a:not(:first-child) {
-  margin: 0 0 0 40px;
-}
+
 .topnav a:hover {
   color: #fff;
   transition-timing-function: ease-in-out;
@@ -425,7 +431,6 @@ select {
     grid-template-columns: 0.9fr 1fr;
   }
 }
-
 
 /*about*/
 .about-page {

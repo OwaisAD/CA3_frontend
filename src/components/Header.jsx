@@ -32,10 +32,11 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
                 <div className="btn-login">
                   <NavLink
                     style={{ paddingRight: "10px", cursor: "pointer" }}
-                    onClick={() => navigate("/profile")}
+                    to="/profile"
                   >
                     Hello, {facade.getUsername()} <i className="fas fa-user-circle"></i>
                   </NavLink>
+
                   <NavButton
                     text="Sign Out"
                     onClick={() => {
@@ -64,7 +65,6 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
           <div className="left-side-navbar">
             <NavButton isLogo />
 
-
             {loggedIn && (
               <>
                 <NavButton text="My Trips" iconClass="fas fa-car" to="/mytrips" />
@@ -85,12 +85,12 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
             ) : (
               <>
                 <div className="btn-login">
-                  <a
+                  <NavLink
                     style={{ paddingRight: "10px", cursor: "pointer" }}
-                    onClick={() => navigate("/profile")}
+                    to="/profile"
                   >
                     Hello, {facade.getUsername()} <i className="fas fa-user-circle"></i>
-                  </a>
+                  </NavLink>
                   <NavButton
                     text="Sign Out"
                     onClick={() => {
