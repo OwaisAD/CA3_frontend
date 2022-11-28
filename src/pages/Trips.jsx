@@ -1,11 +1,13 @@
 import React from "react";
-import PageWrapper from "../components/wrapper/PageWrapper"
 
 const Trips = () => {
   return (
-    <PageWrapper>
-      <p>hi</p>
-    </PageWrapper>
+    <>
+      <div className="trips-page">
+        
+      </div>
+      <div className="overlay-trips"></div>
+    </>
   );
 };
 

@@ -482,3 +482,27 @@ select {
   top: 0;
   left: 0;
 }
+
+/*trips*/
+.trips-page {
+  height: 100vh;
+  background: url("../images/create_user_background.jpg") no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.overlay-trips {
+  position: absolute;
+  background-color: rgba(27, 27, 27, 0.203);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+
+
+/*trip*/
