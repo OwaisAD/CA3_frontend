@@ -58,14 +58,19 @@ const CreateAccountComponent = ({ setErrorMsg, errorMsg }) => {
       return;
     }
 
-    createUser(loginCredentials.username, loginCredentials.password, loginCredentials.age);
+    if(loginCredentials.age < 18 || loginCredentials.age > 80) {
+      setErrorMsg("Invalid age")
+      return;
+    }
+
+    createUser(loginCredentials.username, loginCredentials.email, loginCredentials.password, loginCredentials.age);
   };
 
   // this should be changed
-  const createUser = (user, pass, age) => {
+  const createUser = (user, email, pass, age) => {
     setErrorMsg("");
     facade
-      .createUser(user, pass, age)
+      .createUser(user, email, pass, age)
       .then(() => {
         // SET SOME KIND OF SUCCESS MESSAGE
         navigate("/login");

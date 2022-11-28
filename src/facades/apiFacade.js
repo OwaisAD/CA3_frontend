@@ -65,11 +65,12 @@ function apiFacade() {
       })
   };
 
-  const createUser = async (username, password, age) => {
+  const createUser = async (username, email, password, age) => {
     const options = makeOptions("POST", false, {
-      username: username,
-      password: password,
-      age: age
+      username,
+      email,
+      password,
+      age,
     });
     
     return await fetch(URL + "/users", options)
