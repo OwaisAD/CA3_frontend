@@ -33,10 +33,10 @@ const Profile = ({ loggedIn, setLoggedIn }) => {
             <div className="profile-container">
               <div className="profile-inner-container">
                 <h3>Trip History</h3>
-                {dataFromServer?.movies?.map((movie) => {
+                {dataFromServer?.trips?.map((trip) => {
                   return (
-                    <li key={movie.id}>
-                      {movie.title} from {movie.year}
+                    <li key={trip.id}>
+                      {trip.title} from {trip.year}
                     </li>
                   );
                 })}

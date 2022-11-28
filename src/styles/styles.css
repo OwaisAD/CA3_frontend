@@ -313,10 +313,11 @@ select {
 .profile-container {
   display: flex;
   justify-content: space-around;
-  width: 800px;
-  margin: auto;
+  max-width: 800px;
   padding: 20px;
   z-index: 1000;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 .profile-inner-container {
   width: 250px;
@@ -324,9 +325,10 @@ select {
   padding: 20px;
   box-shadow: #0000003d 0 3px 8px;
   border-radius: 10px;
+  width: 300px;
 }
 .profile-inner-container:nth-child(1) {
-  width: 300px;
+  margin-right: 50px;
 }
 
 .page-wrapper {

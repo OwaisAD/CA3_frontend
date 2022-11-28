@@ -15,6 +15,12 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
         <nav className="topnav">
           <div className="left-side-navbar">
             <NavButton isLogo />
+
+            {loggedIn && (
+              <>
+                <NavButton text="My Trips" iconClass="fas fa-car" to="/mytrips" />
+              </>
+            )}
           </div>
 
           <div className="right-side-navbar">
