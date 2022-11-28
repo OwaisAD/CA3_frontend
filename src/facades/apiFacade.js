@@ -78,20 +78,11 @@ function apiFacade() {
   }
 
   const fetchData = async () => {
-    const options = makeOptions("GET",true); //True add's the token to the headers doing a check if user is logged in and if the addToken parameter is true, which it is here
-    const role = getRole()
+    const options = makeOptions("GET",true);
 
-    // try getting for user
-    if(role === "user") {
     return await fetch(URL + "/users/me", options)
       .then(handleHttpErrors)
-    }
-
-    // then try getting for admin
-    if(role === "admin") {
-      return await fetch(URL + "/info/admin", options)
-        .then(handleHttpErrors)
-    }
+    
   };
 
   const makeOptions = (method, addToken, body) => {

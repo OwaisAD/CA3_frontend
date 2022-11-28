@@ -18,72 +18,75 @@ const Profile = ({ loggedIn, setLoggedIn }) => {
   }, []);
 
   return (
-    <PageWrapper>
+    <>
       {!loggedIn ? (
         <Unauthorized />
       ) : (
         <>
-          <div className="nine">
-            <h1>
-              Profile <span style={{ color: "white" }}>Change your personal information</span>{" "}
-            </h1>
-          </div>
-
-          <div className="profile-container">
-            <div className="profile-inner-container">
-              <h3>Trip History</h3>
-              {dataFromServer?.movies?.map((movie) => {
-                return (
-                  <li key={movie.id}>
-                    {movie.title} from {movie.year}
-                  </li>
-                );
-              })}
+          <div className="profile-page">
+            <div className="nine">
+              <h1>
+                Profile <span style={{ color: "white" }}>Change your personal information</span>{" "}
+              </h1>
             </div>
 
-            <div className="profile-inner-container">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "20px",
-                }}
-              >
-                <p>
-                  <span style={{ fontWeight: "bold" }}>Username: </span>
-                  {dataFromServer?.username}
-                </p>
-                <button>Edit</button>
+            <div className="profile-container">
+              <div className="profile-inner-container">
+                <h3>Trip History</h3>
+                {dataFromServer?.movies?.map((movie) => {
+                  return (
+                    <li key={movie.id}>
+                      {movie.title} from {movie.year}
+                    </li>
+                  );
+                })}
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "20px",
-                }}
-              >
-                <p>
-                  <span style={{ fontWeight: "bold" }}>Email: </span>
-                  {dataFromServer?.username}
-                </p>
-                <button>Edit</button>
-              </div>
+              <div className="profile-inner-container">
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>Username: </span>
+                    {dataFromServer?.username}
+                  </p>
+                  <button>Edit</button>
+                </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <p>
-                  <span style={{ fontWeight: "bold" }}>Age: </span>
-                  {dataFromServer?.age}
-                </p>
-                <button>Edit</button>
-              </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>Email: </span>
+                    {dataFromServer?.email}
+                  </p>
+                  <button>Edit</button>
+                </div>
 
-              <button>Request password change</button>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>Age: </span>
+                    {dataFromServer?.age}
+                  </p>
+                  <button>Edit</button>
+                </div>
+
+                <button>Request password change</button>
+              </div>
             </div>
           </div>
+          <div className="overlay-about"></div>
         </>
       )}
-    </PageWrapper>
+    </>
   );
 };
 
