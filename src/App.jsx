@@ -16,6 +16,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(loggedInInitial);
   const [errorMsg, setErrorMsg] = useState("");
   const [createAccountClicked, setCreateAccountClicked] = useState(false);
+  const [editedProfile, setEditedProfile] = useState(false)
 
   return (
     <>
@@ -24,6 +25,7 @@ const App = () => {
         loggedIn={loggedIn}
         setErrorMsg={setErrorMsg}
         setCreateAccountClicked={setCreateAccountClicked}
+        editedProfile={editedProfile}
       />
 
       <Routes>
@@ -37,6 +39,8 @@ const App = () => {
               <Profile
                 loggedIn={loggedIn}
                 setLoggedIn={setLoggedIn}
+                editedProfile={editedProfile}
+                setEditedProfile={setEditedProfile}
               />
             }
           />

@@ -4,7 +4,7 @@ import Unauthorized from "../components/Unauthorized";
 import { useRef } from "react";
 import { getAge } from "../components/DatePicker";
 
-const Profile = ({ loggedIn, setLoggedIn }) => {
+const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => {
   const usernameRef = useRef();
   const emailRef = useRef();
   const ageRef = useRef();
@@ -43,9 +43,11 @@ const Profile = ({ loggedIn, setLoggedIn }) => {
       `Are you sure you want to change your username from ${dataFromServer?.username} to ${usernameRef.current.value}`
     );
     if (confirmation) {
-      facade
-        .updateUser({ username: usernameRef.current.value })
-        .then(() => setEditedUsername(!editedUsername));
+      facade.updateUser({ username: usernameRef.current.value }).then(() => {
+        setEditedUsername(!editedUsername);
+      });
+      facade.setUsername(usernameRef.current.value)
+      setEditedProfile(!editedProfile);
       setEditingUsername(false);
     } else {
       setEditingUsername(false);
@@ -69,8 +71,8 @@ const Profile = ({ loggedIn, setLoggedIn }) => {
   };
 
   const handleAgeUpdate = () => {
-    let calculatedAge = getAge(ageRef.current.value)
-    console.log(calculatedAge); 
+    let calculatedAge = getAge(ageRef.current.value);
+    console.log(calculatedAge);
     if (isNaN(calculatedAge) || dataFromServer?.age === calculatedAge) {
       setEditingAge(false);
       return;
@@ -190,7 +192,7 @@ const Profile = ({ loggedIn, setLoggedIn }) => {
                     <>
                       <p>
                         <span style={{ fontWeight: "bold" }}>Age: </span>
-                        <input type="date" ref={ageRef}/>
+                        <input type="date" ref={ageRef} />
                       </p>
                       <p onClick={() => handleAgeUpdate()}>
                         <i className="fas fa-save"></i>

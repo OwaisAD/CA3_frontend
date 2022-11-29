@@ -4,10 +4,17 @@ import "../styles/styles.css";
 import { useNavigate } from "react-router-dom";
 import NavButton from "./navbar/NavButton";
 import facade from "../facades/apiFacade";
+import { useState, useEffect } from "react";
 
-function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
+function Header({ loggedIn, setLoggedIn, setCreateAccountClicked, editedProfile}) {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [username, setUsername] = useState("")
+
+  useEffect(() => {
+    setUsername(facade.getUsername())
+  }, [editedProfile])
 
   const navbarItemManager = (pathname) => {
     if (pathname === "/") {
@@ -40,7 +47,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
                     style={{ paddingRight: "10px", cursor: "pointer" }}
                     to="/profile"
                   >
-                    Hello, {facade.getUsername()} <i className="fas fa-user-circle"></i>
+                    Hello, {username} <i className="fas fa-user-circle"></i>
                   </NavLink>
 
                   <NavButton
@@ -95,7 +102,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
                     style={{ paddingRight: "10px", cursor: "pointer" }}
                     to="/profile"
                   >
-                    Hello, {facade.getUsername()} <i className="fas fa-user-circle"></i>
+                    Hello, {username} <i className="fas fa-user-circle"></i>
                   </NavLink>
                   <NavButton
                     text="Sign Out"

@@ -119,6 +119,7 @@ function apiFacade() {
     login,
     logout,
     fetchData,
+    setUsername,
     getUsername,
     createUser,
     updateUser,
