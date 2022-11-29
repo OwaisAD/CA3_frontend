@@ -39,6 +39,7 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
       setEditingUsername(false);
       return;
     }
+    
     let confirmation = confirm(
       `Are you sure you want to change your username from ${dataFromServer?.username} to ${usernameRef.current.value}`
     );
@@ -161,6 +162,7 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
                     </>
                   )}
                 </div>
+                {editingUsername}
 
                 <div
                   style={{
@@ -220,7 +222,7 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
                     </>
                   )}
                 </div>
-
+                
                 <button>Request password change</button>
               </div>
             </div>
