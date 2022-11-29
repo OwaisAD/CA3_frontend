@@ -77,6 +77,14 @@ function apiFacade() {
       .then(handleHttpErrors)
   }
 
+  const updateUser = async (userObject) => {
+    const options = makeOptions("PUT", true, userObject)
+
+    return await fetch(URL + "/users/me/update", options)
+      .then(handleHttpErrors)
+  }
+
+
   const fetchData = async () => {
     const options = makeOptions("GET",true);
 
@@ -113,6 +121,7 @@ function apiFacade() {
     fetchData,
     getUsername,
     createUser,
+    updateUser,
   };
 }
 const facade = apiFacade();
