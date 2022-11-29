@@ -10,6 +10,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Register from "./pages/Registration";
 import Trips from "./pages/Trips";
 
+
 const App = () => {
   let loggedInInitial = window.localStorage.getItem("isLoggedIn");
 
@@ -17,6 +18,7 @@ const App = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [createAccountClicked, setCreateAccountClicked] = useState(false);
   const [editedProfile, setEditedProfile] = useState(false)
+
 
   return (
     <>
