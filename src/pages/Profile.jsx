@@ -3,6 +3,7 @@ import facade from "../facades/apiFacade";
 import Unauthorized from "../components/Unauthorized";
 import { useRef } from "react";
 import { getAge } from "../components/DatePicker";
+import { Button } from "react-bootstrap";
 
 const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => {
   const usernameRef = useRef();
@@ -223,7 +224,7 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
                   )}
                 </div>
                 
-                <button>Request password change</button>
+                <Button className="m-4">Request password change</Button>
               </div>
             </div>
           </div>
