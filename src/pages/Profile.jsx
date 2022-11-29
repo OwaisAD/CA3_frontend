@@ -31,7 +31,7 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
     }
   }, [editedUsername, editedEmail, editedAge]);
 
-  const handleUsernameUpdate = () => {
+  const handleUsernameUpdate = async () => {
     if (
       dataFromServer?.username === usernameRef.current.value ||
       usernameRef.current.value === ""
@@ -43,11 +43,17 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
       `Are you sure you want to change your username from ${dataFromServer?.username} to ${usernameRef.current.value}`
     );
     if (confirmation) {
-      facade.updateUser({ username: usernameRef.current.value }).then(() => {
-        setEditedUsername(!editedUsername);
-      });
-      facade.setUsername(usernameRef.current.value)
-      setEditedProfile(!editedProfile);
+      await facade
+        .updateUser({ username: usernameRef.current.value })
+        .then(() => {
+          setEditedUsername(!editedUsername);
+          facade.setUsername(usernameRef.current.value);
+          setEditedProfile(!editedProfile);
+        })
+        .catch(() => {
+          setEditingUsername(false);
+          return;
+        });
       setEditingUsername(false);
     } else {
       setEditingUsername(false);
@@ -72,7 +78,11 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
 
   const handleAgeUpdate = () => {
     let calculatedAge = getAge(ageRef.current.value);
-    console.log(calculatedAge);
+    if (calculatedAge < 18 || calculatedAge > 80) {
+      setEditingAge(false);
+      return;
+    }
+
     if (isNaN(calculatedAge) || dataFromServer?.age === calculatedAge) {
       setEditingAge(false);
       return;
