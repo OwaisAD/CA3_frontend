@@ -94,7 +94,7 @@ const CreateTrip = () => {
     await facade.createTrip(tripObject).then(() => {
       setErrorMsg("");
     });
-    navigate("/mytrips")
+    navigate("trips");
   };
 
   return (
@@ -166,14 +166,19 @@ const CreateTrip = () => {
         <Button variant="primary" onClick={handleCreateTrip}>
           Save
         </Button>
-        <Button variant="danger" onClick={() => navigate("/mytrips")}>
+        <Button variant="danger" onClick={() => navigate("trips")}>
           Cancel
         </Button>
         <h3 style={{ color: "red" }}>{errorMsg}</h3>
-        
-        {(currFromAddresses.length === 1 && currToAddresses.length === 1) && <GoogleMap fromY={currFromAddresses[0].data.y} fromX={currFromAddresses[0].data.x} toY={currToAddresses[0].data.y} toX={currToAddresses[0].data.x}/>}
-        
 
+        {currFromAddresses.length === 1 && currToAddresses.length === 1 && (
+          <GoogleMap
+            fromY={currFromAddresses[0].data.y}
+            fromX={currFromAddresses[0].data.x}
+            toY={currToAddresses[0].data.y}
+            toX={currToAddresses[0].data.x}
+          />
+        )}
       </div>
       <div className="overlay-create-trips"></div>
     </div>

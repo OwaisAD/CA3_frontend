@@ -26,7 +26,7 @@ const LoginComponent = ({
       .login(user, pass)
       .then((res) => {
         setLoggedIn(true);
-        navigate("/mytrips");
+        navigate("/trips");
       })
       .catch((err) => {
         if (err.status) {

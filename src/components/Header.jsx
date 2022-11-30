@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import NavButton from "./navbar/NavButton";
 import facade from "../facades/apiFacade";
 
-function Header({ loggedIn, setLoggedIn, setCreateAccountClicked}) {
+function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
   const navigate = useNavigate();
   const location = useLocation();
-
 
   const navbarItemManager = (pathname) => {
     if (pathname === "/") {
@@ -19,7 +18,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked}) {
 
             {loggedIn && (
               <>
-                <NavButton text="My Trips" iconClass="fas fa-car" to="/mytrips" />
+                <NavButton text="Trips" iconClass="fas fa-car" to="trips" />
               </>
             )}
           </div>
@@ -37,10 +36,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked}) {
             ) : (
               <>
                 <div className="btn-login">
-                  <NavLink
-                    style={{ paddingRight: "10px", cursor: "pointer" }}
-                    to="/profile"
-                  >
+                  <NavLink style={{ paddingRight: "10px", cursor: "pointer" }} to="/profile">
                     Hello, {loggedIn && facade.getUsername()} <i className="fas fa-user-circle"></i>
                   </NavLink>
 
@@ -74,7 +70,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked}) {
 
             {loggedIn && (
               <>
-                <NavButton text="My Trips" iconClass="fas fa-car" to="/mytrips" />
+                <NavButton text="Trips" iconClass="fas fa-car" to="trips" />
               </>
             )}
           </div>
@@ -92,10 +88,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked}) {
             ) : (
               <>
                 <div className="btn-login">
-                  <NavLink
-                    style={{ paddingRight: "10px", cursor: "pointer" }}
-                    to="/profile"
-                  >
+                  <NavLink style={{ paddingRight: "10px", cursor: "pointer" }} to="/profile">
                     Hello, {loggedIn && facade.getUsername()} <i className="fas fa-user-circle"></i>
                   </NavLink>
                   <NavButton

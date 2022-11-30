@@ -508,10 +508,28 @@ select {
 
 .trips-container {
   width: 500px;
-  height: 400px;
+  height: 600px;
   background-color: white;
   margin: auto;
   z-index: 1000;
+  padding: 50px;
+}
+
+.trips-list {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+/*styling status dots*/
+.dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%; 
+  /* display: inline-block; */
+  z-index: 1000;
+  float: right;
+
 }
 
 /*create trip*/
@@ -573,3 +591,4 @@ select {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
