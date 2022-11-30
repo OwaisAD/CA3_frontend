@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import GoogleMap from "../components/GoogleMap";
 import facade from "../facades/apiFacade";
 
 const CreateTrip = () => {
@@ -169,6 +170,10 @@ const CreateTrip = () => {
           Cancel
         </Button>
         <h3 style={{ color: "red" }}>{errorMsg}</h3>
+        
+        {(currFromAddresses.length === 1 && currToAddresses.length === 1) && <GoogleMap fromY={currFromAddresses[0].data.y} fromX={currFromAddresses[0].data.x} toY={currToAddresses[0].data.y} toX={currToAddresses[0].data.x}/>}
+        
+
       </div>
       <div className="overlay-create-trips"></div>
     </div>
