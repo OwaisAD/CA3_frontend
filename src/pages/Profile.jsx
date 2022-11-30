@@ -115,7 +115,8 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
 
             <div className="profile-container">
               <div className="profile-inner-container">
-                <h3>Trip History</h3>
+                <h3 className="text-center mb-4">Trip History</h3>
+                <li>hi</li>
                 {dataFromServer?.trips?.map((trip) => {
                   return (
                     <li key={trip.id}>
@@ -126,6 +127,7 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
               </div>
 
               <div className="profile-inner-container">
+              <h3 className="text-center mb-4">Your Information</h3>
                 <div
                   style={{
                     display: "flex",
@@ -223,8 +225,9 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
                     </>
                   )}
                 </div>
-                
-                <Button className="m-4">Request password change</Button>
+                <div className="text-center">
+                <Button className="mauto">Request password change</Button>
+                </div>
               </div>
             </div>
           </div>
