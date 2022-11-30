@@ -1,5 +1,5 @@
 import {BASE_API_URL as URL} from "../../settings"
-
+import { DAWA_URL } from "../../settings";
 
 const handleHttpErrors = async (res) => {
   if (!res.ok) {
@@ -93,6 +93,13 @@ function apiFacade() {
     
   };
 
+  const fetchAddresses = async (address) => {
+    const options = makeOptions("GET", false)
+
+    return await fetch(DAWA_URL + address, options)
+      .then(handleHttpErrors)
+  }
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -123,6 +130,7 @@ function apiFacade() {
     getUsername,
     createUser,
     updateUser,
+    fetchAddresses,
   };
 }
 const facade = apiFacade();

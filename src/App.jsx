@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Register from "./pages/Registration";
 import Trips from "./pages/Trips";
+import CreateTrip from "./pages/CreateTrip";
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="about" element={<About />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/mytrips" element={<Trips />} />
+          <Route path="/createtrip" element={<CreateTrip />} />
           <Route
             path="/profile"
             element={

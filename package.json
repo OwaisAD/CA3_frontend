@@ -11,6 +11,9 @@
     "postbuild": "purgecss --css dist/assets/*.css --content dist/index.html dist/assets/*.js --output purgecss/static/css"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.16",
     "bootstrap": "^5.2.3",
     "mdb-react-ui-kit": "^5.0.0",
     "purgecss": "^5.0.0",
