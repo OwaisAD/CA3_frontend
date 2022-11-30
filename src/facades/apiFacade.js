@@ -93,6 +93,16 @@ function apiFacade() {
     
   };
 
+
+  //get user trips
+  const getUserTrips = async () => {
+    const options = makeOptions("GET", true)
+
+    return await fetch(URL + "/users/me/trips", options)
+      .then(handleHttpErrors)
+  }
+
+
   const fetchAddresses = async (address) => {
     const options = makeOptions("GET", false)
 
@@ -100,12 +110,13 @@ function apiFacade() {
       .then(handleHttpErrors)
   }
 
-  const handleCreateTrip = async (tripObject) => {
+  const createTrip = async (tripObject) => {
     const options = makeOptions("POST", true, tripObject)
 
-    return await fetch(URL + "/trips/user", options)
+    return await fetch(URL + "/trips/", options)
       .then(handleHttpErrors)
   }
+
 
   const makeOptions = (method, addToken, body) => {
     var opts = {
@@ -138,7 +149,8 @@ function apiFacade() {
     createUser,
     updateUser,
     fetchAddresses,
-    handleCreateTrip,
+    createTrip,
+    getUserTrips
   };
 }
 const facade = apiFacade();

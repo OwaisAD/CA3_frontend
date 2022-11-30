@@ -15,6 +15,8 @@ const CreateTrip = () => {
 
     const [flexibilityRadius, setFlexibilityRadius] = useState(1) 
 
+    const [travelDate, setTravelDate] = useState("") 
+
   // saving and updating the data for the to-location
     const onChangeFrom = async (evt) => {
         setCurrFromAddress(evt.target.value)
@@ -50,6 +52,11 @@ const handleFlexibilityRadius = (evt) => {
     console.log(flexibilityRadius);
 }
 
+
+const handleTravelDate = (evt) => {
+  setTravelDate(evt.target.value)
+}
+
 // handling submit
  const handleCreateTrip = async () => {
     // console.log("FROM",currFromAddresses);
@@ -57,9 +64,10 @@ const handleFlexibilityRadius = (evt) => {
     const fromCoordinates = `${currFromAddresses[0].data.x},${currFromAddresses[0].data.y}`
     const toCoordinates = `${currToAddresses[0].data.x},${currToAddresses[0].data.y}`
     const tripObject = {
-        fromCoordinates,
-        toCoordinates,
-        flexibilityRadius,
+        startpoint: fromCoordinates,
+        endpoint: toCoordinates,
+        "acceptance_radius": flexibilityRadius,
+        "date": travelDate,
     }
     await facade.createTrip(tripObject)
 }
@@ -74,7 +82,7 @@ const handleFlexibilityRadius = (evt) => {
           <div className="autocomplete-items">
             {currFromAddresses.length > 1 && currFromAddresses.map((address, idx) => {
                 return <div key={idx} onClick={() => handleAddressFromClicked(address.forslagstekst)}><p>{address.forslagstekst}</p></div>
-            })}
+            }).slice(0,10)}
           </div>
         </div>
 
@@ -85,7 +93,7 @@ const handleFlexibilityRadius = (evt) => {
           <div className="autocomplete-items">
             {currToAddresses.length > 1 && currToAddresses.map((address, idx) => {
                 return <div key={idx} onClick={() => handleAddressToClicked(address.forslagstekst)}><p>{address.forslagstekst}</p></div>
-            })}
+            }).slice(0,10)}
           </div>
         </div>
 
@@ -97,6 +105,9 @@ const handleFlexibilityRadius = (evt) => {
           <option>4</option>
           <option>5</option>
         </Form.Select>
+
+        <label htmlFor="">Travel date</label>
+        <input type="date" onChange={handleTravelDate}/>
 
         <Button variant="primary" onClick={handleCreateTrip}>Save</Button>
         <Button variant="danger" onClick={() => navigate("/mytrips")}>Cancel</Button>
