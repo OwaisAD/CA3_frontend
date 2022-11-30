@@ -100,6 +100,13 @@ function apiFacade() {
       .then(handleHttpErrors)
   }
 
+  const handleCreateTrip = async (tripObject) => {
+    const options = makeOptions("POST", true, tripObject)
+
+    return await fetch(URL + "/trips/user", options)
+      .then(handleHttpErrors)
+  }
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -131,6 +138,7 @@ function apiFacade() {
     createUser,
     updateUser,
     fetchAddresses,
+    handleCreateTrip,
   };
 }
 const facade = apiFacade();
