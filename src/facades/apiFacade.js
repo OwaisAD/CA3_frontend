@@ -1,5 +1,6 @@
 import {BASE_API_URL as URL} from "../../settings"
 import { DAWA_URL } from "../../settings";
+import { DAWA_URL_REVERSE } from "../../settings";
 
 const handleHttpErrors = async (res) => {
   if (!res.ok) {
@@ -93,7 +94,6 @@ function apiFacade() {
     
   };
 
-
   //get user trips
   const getUserTrips = async () => {
     const options = makeOptions("GET", true)
@@ -117,10 +117,19 @@ function apiFacade() {
     return await fetch(URL + `/trips/${id}`, options)
   }
 
+  //FETCH DAWA ADDRESSES BY ADDRESS STRING
   const fetchAddresses = async (address) => {
     const options = makeOptions("GET", false)
 
     return await fetch(DAWA_URL + address, options)
+      .then(handleHttpErrors)
+  }
+
+  //FETCH DAWA ADDRESSES BY X- AND Y- COORDINATES
+  const fetchAddressesByXandY = async (x, y) => {
+    const options = makeOptions("GET", false)
+
+    return await fetch(DAWA_URL_REVERSE + `x=${x}&y=${y}&struktur=mini`, options)
       .then(handleHttpErrors)
   }
 
@@ -163,6 +172,7 @@ function apiFacade() {
     createUser,
     updateUser,
     fetchAddresses,
+    fetchAddressesByXandY,
     createTrip,
     getUserTrips,
     deleteUserTrip,

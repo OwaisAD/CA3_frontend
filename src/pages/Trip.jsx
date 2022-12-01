@@ -15,19 +15,32 @@ const Trip = () => {
   const [toX, setToX] = useState("");
   const [toY, setToY] = useState("");
 
+  const [startpointFetched, setStartpointFetched] = useState("");
+  const [endpointFetched, setEndpointFetched] = useState("");
+
+  const fetchAddressesForNames = async (x, y) => {
+    const res = await facade.fetchAddressesByXandY(x, y);
+    console.log(res.betegnelse);
+    return res.betegnelse;
+  };
+
   useEffect(() => {
     facade
       .getUserTrip(params.id)
       .then((res) => {
         setTrip(res);
-        let from = res.startpoint;
-        let to = res.endpoint;
-        let fromArr = String(from).split(",");
-        let toArr = String(to).split(",");
+        let fromArr = String(res.startpoint).split(",");
+        let toArr = String(res.endpoint).split(",");
         setFromX(fromArr?.[1]);
         setFromY(fromArr?.[0]);
         setToX(toArr?.[1]);
         setToY(toArr?.[0]);
+        fetchAddressesForNames(res.startpoint.split(",")[1], res.startpoint.split(",")[0]).then(
+          (res) => setStartpointFetched(res)
+        );
+        fetchAddressesForNames(res.endpoint.split(",")[1], res.endpoint.split(",")[0]).then(
+          (res) => setEndpointFetched(res)
+        );
       })
       .catch((err) => {
         err.fullError.then((e) => setError(e.message));
@@ -56,8 +69,8 @@ const Trip = () => {
                 Delete trip <i className="fas fa-trash"></i>
               </Button>
               <h2>Date: {trip?.date}</h2>
-              <p>From: {trip?.startpoint}</p>
-              <p>To: {trip?.endpoint}</p>
+              <p>From: {startpointFetched}</p>
+              <p>To: {endpointFetched}</p>
               <p>Flexibility radius: {trip?.acceptance_radius}</p>
               <Button onClick={() => navigate(`/trips/${params.id}/edit`)}>Edit trip</Button>
               {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
