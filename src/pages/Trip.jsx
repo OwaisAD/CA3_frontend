@@ -15,27 +15,23 @@ const Trip = () => {
   const [toX, setToX] = useState("");
   const [toY, setToY] = useState("");
 
-  const fetchTripData = async () => {
-    await facade
+  useEffect(() => {
+    facade
       .getUserTrip(params.id)
       .then((res) => {
         setTrip(res);
+        let from = res.startpoint;
+        let to = res.endpoint;
+        let fromArr = String(from).split(",");
+        let toArr = String(to).split(",");
+        setFromX(fromArr?.[1]);
+        setFromY(fromArr?.[0]);
+        setToX(toArr?.[1]);
+        setToY(toArr?.[0]);
       })
       .catch((err) => {
         err.fullError.then((e) => setError(e.message));
       });
-  };
-
-  useEffect(() => {
-    fetchTripData();
-    let from = trip?.startpoint;
-    let to = trip?.endpoint;
-    let fromArr = String(from).split(",");
-    let toArr = String(to).split(",");
-    setFromX(fromArr?.[1]);
-    setFromY(fromArr?.[0]);
-    setToX(toArr?.[1]);
-    setToY(toArr?.[0]);
   }, []);
 
   const handleDeleteTrip = async () => {
