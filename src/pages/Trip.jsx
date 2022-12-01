@@ -24,7 +24,6 @@ const Trip = () => {
       .catch((err) => {
         err.fullError.then((e) => setError(e.message));
       });
-
   };
 
   useEffect(() => {
@@ -47,10 +46,10 @@ const Trip = () => {
     }
   };
 
-  return ( 
+  return (
     <>
       <div className="trip-page">
-        <div className="trip-page-container">
+        <div className="trip-page-container" style={{ borderLeft: "8px solid grey" }}>
           {error === "" ? (
             <>
               <Button
@@ -64,11 +63,10 @@ const Trip = () => {
               <p>From: {trip?.startpoint}</p>
               <p>To: {trip?.endpoint}</p>
               <p>Flexibility radius: {trip?.acceptance_radius}</p>
-              <p>MAP</p>
               <Button onClick={() => navigate(`/trips/${params.id}/edit`)}>Edit trip</Button>
               {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
-            <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
-          )}
+                <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+              )}
             </>
           ) : (
             <>
