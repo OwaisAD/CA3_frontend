@@ -102,6 +102,20 @@ function apiFacade() {
       .then(handleHttpErrors)
   }
 
+  //get user trip
+  const getUserTrip = async (id) => {
+    const options = makeOptions("GET", true)
+
+    return await fetch(URL + `/trips/${id}`, options)
+      .then(handleHttpErrors)
+  }
+
+  //delete user trip
+  const deleteUserTrip = async (id) => {
+    const options = makeOptions("DELETE", true)
+
+    return await fetch(URL + `/trips/${id}`, options)
+  }
 
   const fetchAddresses = async (address) => {
     const options = makeOptions("GET", false)
@@ -150,7 +164,9 @@ function apiFacade() {
     updateUser,
     fetchAddresses,
     createTrip,
-    getUserTrips
+    getUserTrips,
+    deleteUserTrip,
+    getUserTrip,
   };
 }
 const facade = apiFacade();
