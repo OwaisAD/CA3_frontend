@@ -11,6 +11,7 @@ import Register from "./pages/Registration";
 import Trips from "./pages/Trips";
 import CreateTrip from "./pages/CreateTrip";
 import Trip from "./pages/Trip";
+import EditTrip from "./pages/EditTrip";
 
 const App = () => {
   let loggedInInitial = window.localStorage.getItem("isLoggedIn");
@@ -37,7 +38,7 @@ const App = () => {
           <Route path="/trips" element={<Trips />}/>
           <Route path="/trips/:id" element={<Trip />} />
           <Route path="/createtrip" element={<CreateTrip />} />
-
+          <Route path="/trips/:id/edit" element={<EditTrip />} />
           <Route
             path="/profile"
             element={

@@ -83,8 +83,8 @@ const CreateTrip = () => {
 
     // console.log("FROM",currFromAddresses);
     // console.log("TO",currToAddresses);
-    const fromCoordinates = `${currFromAddresses[0].data.x},${currFromAddresses[0].data.y}`;
-    const toCoordinates = `${currToAddresses[0].data.x},${currToAddresses[0].data.y}`;
+    const fromCoordinates = `${currFromAddresses[0].data.y},${currFromAddresses[0].data.x}`;
+    const toCoordinates = `${currToAddresses[0].data.y},${currToAddresses[0].data.x}`;
     const tripObject = {
       startpoint: fromCoordinates,
       endpoint: toCoordinates,
@@ -100,6 +100,7 @@ const CreateTrip = () => {
   return (
     <div className="create-trip-page">
       <div className="create-trip-component">
+        <h2>Create trip</h2>
         <label htmlFor="">From</label>
         <div className="autocomplete">
           <input
