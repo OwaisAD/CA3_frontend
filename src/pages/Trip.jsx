@@ -6,7 +6,7 @@ const Trip = () => {
     console.log(params)
   return (
     <div>
-      
+      <h3>hejrwejrnkerw</h3>
     </div>
   )
 }

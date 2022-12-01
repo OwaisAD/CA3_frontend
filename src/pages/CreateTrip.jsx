@@ -94,7 +94,7 @@ const CreateTrip = () => {
     await facade.createTrip(tripObject).then(() => {
       setErrorMsg("");
     });
-    navigate("trips");
+    navigate("/trips");
   };
 
   return (
@@ -166,7 +166,7 @@ const CreateTrip = () => {
         <Button variant="primary" onClick={handleCreateTrip}>
           Save
         </Button>
-        <Button variant="danger" onClick={() => navigate("trips")}>
+        <Button variant="danger" onClick={() => navigate("/trips")}>
           Cancel
         </Button>
         <h3 style={{ color: "red" }}>{errorMsg}</h3>

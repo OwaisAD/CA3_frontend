@@ -32,11 +32,10 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route path="/about" element={<About />} />
         <Route element={<ProtectedRoutes />}>
-          <Route path="/trips" element={<Trips />}>
+          <Route path="/trips" element={<Trips />}/>
           <Route path="/trips/:id" element={<Trip />} />
-          </Route>
           <Route path="/createtrip" element={<CreateTrip />} />
 
           <Route
