@@ -613,7 +613,7 @@ select {
 }
 
 .trip-page-container {
- width: 400px;
+ width: 600px;
  height: 400px;
  background-color: white;
  z-index: 1000;

@@ -18,9 +18,18 @@ const Trip = () => {
   const [startpointFetched, setStartpointFetched] = useState("");
   const [endpointFetched, setEndpointFetched] = useState("");
 
+  const days = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+  };
+
   const fetchAddressesForNames = async (x, y) => {
     const res = await facade.fetchAddressesByXandY(x, y);
-    console.log(res.betegnelse);
     return res.betegnelse;
   };
 
@@ -35,11 +44,15 @@ const Trip = () => {
         setFromY(fromArr?.[0]);
         setToX(toArr?.[1]);
         setToY(toArr?.[0]);
+
+        //fetching the from address based on x and y
         fetchAddressesForNames(res.startpoint.split(",")[1], res.startpoint.split(",")[0]).then(
           (res) => setStartpointFetched(res)
         );
-        fetchAddressesForNames(res.endpoint.split(",")[1], res.endpoint.split(",")[0]).then(
-          (res) => setEndpointFetched(res)
+
+        //fetching the to address based on x and y
+        fetchAddressesForNames(res.endpoint.split(",")[1], res.endpoint.split(",")[0]).then((res) =>
+          setEndpointFetched(res)
         );
       })
       .catch((err) => {
@@ -68,7 +81,9 @@ const Trip = () => {
               >
                 Delete trip <i className="fas fa-trash"></i>
               </Button>
-              <h2>Date: {trip?.date}</h2>
+              <h2>
+                Date: {days[new Date(trip?.date).getDay()]} {trip?.date}
+              </h2>
               <p>From: {startpointFetched}</p>
               <p>To: {endpointFetched}</p>
               <p>Flexibility radius: {trip?.acceptance_radius}</p>
