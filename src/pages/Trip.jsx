@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import facade from "../facades/apiFacade";
 import GoogleMap from "../components/GoogleMap";
+import EditTrip from "../components/EditTrip";
 
 const Trip = () => {
   const [trip, setTrip] = useState({});
@@ -102,12 +103,7 @@ const Trip = () => {
           )}
         </div>}
 
-        {editingMode && 
-        <div className="editing-mode-container">
-          <h2>heyu</h2>
-          <Button variant="secondary" onClick={() => setEditingMode(false)}>Cancel</Button>
-        </div>
-        }
+        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} startPoint={startpointFetched} endPoint={endpointFetched}/>}
 
 
       </div>

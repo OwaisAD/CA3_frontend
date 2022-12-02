@@ -27,7 +27,7 @@ const CreateTrip = () => {
 
   const today = `${year}-${month}-${day}`;
 
-  // saving and updating the data for the to-location
+  // saving and updating the data for the from-location
   const onChangeFrom = async (evt) => {
     setCurrFromAddress(evt.target.value);
     const addresses = await facade.fetchAddresses(evt.target.value);
