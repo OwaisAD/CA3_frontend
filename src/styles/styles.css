@@ -620,3 +620,11 @@ select {
  margin: auto;
  position: relative;
 }
+
+.editing-mode-container {
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  z-index: 1000;
+  margin: auto;
+}

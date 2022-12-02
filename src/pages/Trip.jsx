@@ -18,6 +18,8 @@ const Trip = () => {
   const [startpointFetched, setStartpointFetched] = useState("");
   const [endpointFetched, setEndpointFetched] = useState("");
 
+  const [editingMode, setEditingMode] = useState(false)
+
   const days = {
     0: "Sunday",
     1: "Monday",
@@ -71,6 +73,7 @@ const Trip = () => {
   return (
     <>
       <div className="trip-page">
+        {!editingMode && 
         <div className="trip-page-container" style={{ borderLeft: "8px solid grey" }}>
           {error === "" ? (
             <>
@@ -87,7 +90,7 @@ const Trip = () => {
               <p>From: {startpointFetched}</p>
               <p>To: {endpointFetched}</p>
               <p>Flexibility radius: {trip?.acceptance_radius}</p>
-              <Button onClick={() => navigate(`/trips/${params.id}/edit`)}>Edit trip</Button>
+              <Button onClick={() => setEditingMode(true)}>Edit trip</Button>
               {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
                 <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
               )}
@@ -97,7 +100,16 @@ const Trip = () => {
               <h2>{error}</h2>
             </>
           )}
+        </div>}
+
+        {editingMode && 
+        <div className="editing-mode-container">
+          <h2>heyu</h2>
+          <Button variant="secondary" onClick={() => setEditingMode(false)}>Cancel</Button>
         </div>
+        }
+
+
       </div>
       <div className="overlay-trip-page"></div>
     </>
