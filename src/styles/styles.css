@@ -623,10 +623,11 @@ select {
 
 .editing-mode-container {
   width: 600px;
-  height: 400px;
+  height: 800px;
   background-color: white;
   z-index: 1000;
   margin: auto;
+
 }
 
 .editing-mode-container {

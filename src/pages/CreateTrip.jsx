@@ -20,13 +20,6 @@ const CreateTrip = () => {
 
   const [travelDate, setTravelDate] = useState("");
 
-  var dateObj = new Date();
-  var month = dateObj.getUTCMonth() + 1; //months from 1-12
-  var day = dateObj.getUTCDate();
-  var year = dateObj.getUTCFullYear();
-
-  const today = `${year}-${month}-${day}`;
-
   // saving and updating the data for the from-location
   const onChangeFrom = async (evt) => {
     setCurrFromAddress(evt.target.value);
@@ -161,7 +154,7 @@ const CreateTrip = () => {
         </Form.Select>
 
         <label htmlFor="">Travel date</label>
-        <input type="date" min={today} onChange={handleTravelDate} />
+        <input type="date" min={new Date().toISOString().split('T')[0]} onChange={handleTravelDate} />
 
         <Button variant="primary" onClick={handleCreateTrip}>
           Save

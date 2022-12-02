@@ -40,6 +40,11 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
     const addresses = await facade.fetchAddresses(addressClicked);
     setCurrToAddresses(addresses);
   };
+
+  const handleTravelDate = (evt) => {
+    setTravelDate(evt.target.value);
+  };
+
   
   const days = {
     0: "Sunday",
@@ -114,6 +119,9 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
           <option value={4}>4</option>
           <option value={5}>5</option>
         </Form.Select>
+
+        <label htmlFor="">Travel date</label>
+        <input type="date" min={new Date().toISOString().split('T')[0]} onChange={handleTravelDate} value={date} />
 
       <div>
         <Button variant="secondary" onClick={() => setEditingMode(false)}>
