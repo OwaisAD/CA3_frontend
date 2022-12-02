@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import GoogleMap from "../components/GoogleMap";
+import { isValidDate } from "../components/utils/DateValidator";
 import facade from "../facades/apiFacade";
 
 const CreateTrip = () => {
@@ -70,6 +71,10 @@ const CreateTrip = () => {
     }
     if (travelDate === "") {
       setErrorMsg("Please select a travel date");
+      return;
+    }
+    if (!isValidDate(travelDate)) {
+      setErrorMsg("Please select a valid travel date");
       return;
     }
 
