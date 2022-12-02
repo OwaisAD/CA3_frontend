@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import facade from "../facades/apiFacade";
 
-const EditTrip = ({ setEditingMode, tripId, startPoint, endPoint}) => {
+const EditTrip = ({ setEditingMode, tripId, startPoint, endPoint, flexibility }) => {
   const [currFromAddress, setCurrFromAddress] = useState(startPoint);
   const [currFromAddresses, setCurrFromAddresses] = useState([]);
 
   const [currToAddress, setCurrToAddress] = useState(endPoint);
   const [currToAddresses, setCurrToAddresses] = useState([]);
+
+  const [flexibilityRadius, setFlexibilityRadius] = useState(flexibility);
 
   // saving and updating the data for the from-location
   const onChangeFrom = async (evt) => {
@@ -22,6 +24,23 @@ const EditTrip = ({ setEditingMode, tripId, startPoint, endPoint}) => {
     const addresses = await facade.fetchAddresses(evt.target.value);
     setCurrToAddresses(addresses);
   };
+
+  const handleAddressFromClicked = async (addressClicked) => {
+    setCurrFromAddress(addressClicked);
+    const addresses = await facade.fetchAddresses(addressClicked);
+    setCurrFromAddresses(addresses);
+  };
+  
+  const handleFlexibilityRadius = (evt) => {
+    setFlexibilityRadius(evt.target.value);
+  };
+
+  const handleAddressToClicked = async (addressClicked) => {
+    setCurrToAddress(addressClicked);
+    const addresses = await facade.fetchAddresses(addressClicked);
+    setCurrToAddresses(addresses);
+  };
+  
 
   return (
     <div className="editing-mode-container">
@@ -76,11 +95,22 @@ const EditTrip = ({ setEditingMode, tripId, startPoint, endPoint}) => {
         </div>
       </div>
 
+      <label htmlFor="">Flexibility radius</label>
+        <Form.Select defaultValue={flexibilityRadius} onChange={handleFlexibilityRadius} >
+          <option value=""> -- Select an option -- </option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
+        </Form.Select>
 
-      <Button variant="secondary" onClick={() => setEditingMode(false)}>
-        Cancel
-      </Button>
-      <Button variant="primary">Save</Button>
+      <div>
+        <Button variant="secondary" onClick={() => setEditingMode(false)}>
+          Cancel
+        </Button>
+        <Button variant="primary">Save</Button>
+      </div>
     </div>
   );
 };

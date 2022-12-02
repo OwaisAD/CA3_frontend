@@ -55,7 +55,6 @@ const CreateTrip = () => {
 
   const handleFlexibilityRadius = (evt) => {
     setFlexibilityRadius(evt.target.value);
-    console.log(flexibilityRadius);
   };
 
   const handleTravelDate = (evt) => {

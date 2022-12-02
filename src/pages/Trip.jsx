@@ -101,9 +101,10 @@ const Trip = () => {
               <h2>{error}</h2>
             </>
           )}
+          
         </div>}
 
-        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} startPoint={startpointFetched} endPoint={endpointFetched}/>}
+        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} startPoint={startpointFetched} endPoint={endpointFetched} flexibility={trip?.acceptance_radius}/>}
 
 
       </div>

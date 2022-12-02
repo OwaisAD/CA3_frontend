@@ -628,3 +628,8 @@ select {
   z-index: 1000;
   margin: auto;
 }
+
+.editing-mode-container {
+  display: flex;
+  flex-direction: column;
+}
