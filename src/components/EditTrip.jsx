@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import facade from "../facades/apiFacade";
 
-const EditTrip = ({ setEditingMode, tripId, startPoint, endPoint, flexibility }) => {
+const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibility }) => {
   const [currFromAddress, setCurrFromAddress] = useState(startPoint);
   const [currFromAddresses, setCurrFromAddresses] = useState([]);
 
@@ -41,10 +41,20 @@ const EditTrip = ({ setEditingMode, tripId, startPoint, endPoint, flexibility })
     setCurrToAddresses(addresses);
   };
   
+  const days = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+  };
 
   return (
     <div className="editing-mode-container">
       <h2>Editing trip</h2>
+      <h3>{days[new Date(date).getDay()]} {date}</h3>
       <label htmlFor="">From</label>
       <div className="autocomplete">
         <input

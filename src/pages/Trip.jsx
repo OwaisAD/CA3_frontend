@@ -104,7 +104,7 @@ const Trip = () => {
           
         </div>}
 
-        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} startPoint={startpointFetched} endPoint={endpointFetched} flexibility={trip?.acceptance_radius}/>}
+        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} date={trip?.date} startPoint={startpointFetched} endPoint={endpointFetched} flexibility={trip?.acceptance_radius}/>}
 
 
       </div>
