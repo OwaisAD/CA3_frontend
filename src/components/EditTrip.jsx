@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import facade from "../facades/apiFacade";
+import { isValidDate } from "../components/utils/DateValidator";
+import { useNavigate } from "react-router-dom";
 
 const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibility }) => {
+  const navigate = useNavigate();
+
   const [currFromAddress, setCurrFromAddress] = useState(startPoint);
   const [currFromAddresses, setCurrFromAddresses] = useState([]);
 
@@ -10,6 +14,10 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
   const [currToAddresses, setCurrToAddresses] = useState([]);
 
   const [flexibilityRadius, setFlexibilityRadius] = useState(flexibility);
+
+  const [travelDate, setTravelDate] = useState("");
+
+  const [errorMsg, setErrorMsg] = useState("");
 
   // saving and updating the data for the from-location
   const onChangeFrom = async (evt) => {
@@ -30,7 +38,7 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
     const addresses = await facade.fetchAddresses(addressClicked);
     setCurrFromAddresses(addresses);
   };
-  
+
   const handleFlexibilityRadius = (evt) => {
     setFlexibilityRadius(evt.target.value);
   };
@@ -45,7 +53,45 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
     setTravelDate(evt.target.value);
   };
 
-  
+  // handling submit
+  const handleEditTrip = async () => {
+    if (currFromAddresses.length < 1) {
+      setErrorMsg("Please enter a from destination");
+      return;
+    }
+    if (currToAddresses.length < 1) {
+      setErrorMsg("Please enter a to destination");
+      return;
+    }
+    if (flexibilityRadius === 0) {
+      setErrorMsg("Please select a flexibility radius");
+      return;
+    }
+    if (travelDate === "") {
+      setErrorMsg("Please select a travel date");
+      return;
+    }
+    if (!isValidDate(travelDate)) {
+      setErrorMsg("Please select a valid travel date");
+      return;
+    }
+
+    // console.log("FROM",currFromAddresses);
+    // console.log("TO",currToAddresses);
+    const fromCoordinates = `${currFromAddresses[0].data.y},${currFromAddresses[0].data.x}`;
+    const toCoordinates = `${currToAddresses[0].data.y},${currToAddresses[0].data.x}`;
+    const tripObject = {
+      startpoint: fromCoordinates,
+      endpoint: toCoordinates,
+      acceptance_radius: flexibilityRadius,
+      date: travelDate,
+    };
+    await facade.createTrip(tripObject).then(() => {
+      setErrorMsg("");
+    });
+    navigate(`/trips/${tripId}`);
+  };
+
   const days = {
     0: "Sunday",
     1: "Monday",
@@ -59,7 +105,9 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
   return (
     <div className="editing-mode-container">
       <h2>Editing trip</h2>
-      <h3>{days[new Date(date).getDay()]} {date}</h3>
+      <h3>
+        {days[new Date(date).getDay()]} {date}
+      </h3>
       <label htmlFor="">From</label>
       <div className="autocomplete">
         <input
@@ -111,23 +159,32 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
       </div>
 
       <label htmlFor="">Flexibility radius</label>
-        <Form.Select defaultValue={flexibilityRadius} onChange={handleFlexibilityRadius} >
-          <option value=""> -- Select an option -- </option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-        </Form.Select>
+      <Form.Select defaultValue={flexibilityRadius} onChange={handleFlexibilityRadius}>
+        <option value=""> -- Select an option -- </option>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+      </Form.Select>
 
-        <label htmlFor="">Travel date</label>
-        <input type="date" min={new Date().toISOString().split('T')[0]} onChange={handleTravelDate} value={date} />
+      <label htmlFor="">Travel date</label>
+      <input
+        type="date"
+        min={new Date().toISOString().split("T")[0]}
+        onChange={handleTravelDate}
+        value={date}
+      />
 
       <div>
         <Button variant="secondary" onClick={() => setEditingMode(false)}>
           Cancel
         </Button>
-        <Button variant="primary">Save</Button>
+        <Button variant="primary" onClick={handleEditTrip}>
+          Save
+        </Button>
+
+        <h3 style={{ color: "red" }}>{errorMsg}</h3>
       </div>
     </div>
   );
