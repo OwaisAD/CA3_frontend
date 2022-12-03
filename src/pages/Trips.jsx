@@ -9,6 +9,7 @@ const Trips = () => {
   const navigate = useNavigate();
 
   const [myTrips, setMyTrips] = useState([]);
+  const [refresh, setRefresh] = useState(false)
 
   const days = {
     0: "Sunday",
@@ -22,14 +23,18 @@ const Trips = () => {
 
   useEffect(() => {
     facade.getUserTrips().then((res) => setMyTrips(res));
-  }, []);
+  }, [refresh]);
+
+  const handleRefresh = () => {
+    setRefresh(!refresh)
+  }
 
   return (
     <>
       <div className="trips-page">
         <div className="trips-container">
           <h1>Your Trips</h1>
-          <i className="fas fa-refresh" style={{zIndex: "1000"}}></i>
+          <p onClick={handleRefresh} style={{cursor: "pointer"}}><i className="fas fa-refresh" style={{zIndex: "1000"}}></i></p>
           <div className="trips-list">
             {myTrips.length >= 1 &&
               myTrips?.map((trip) => {
