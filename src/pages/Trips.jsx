@@ -9,7 +9,7 @@ const Trips = () => {
   const navigate = useNavigate();
 
   const [myTrips, setMyTrips] = useState([]);
-  const [refresh, setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false);
 
   const days = {
     0: "Sunday",
@@ -26,34 +26,49 @@ const Trips = () => {
   }, [refresh]);
 
   const handleRefresh = () => {
-    setRefresh(!refresh)
-  }
+    setRefresh(!refresh);
+  };
 
   return (
     <>
       <div className="trips-page">
         <div className="trips-container">
           <h1>Your Trips</h1>
-          <p onClick={handleRefresh} style={{cursor: "pointer"}}><i className="fas fa-refresh" style={{zIndex: "1000"}}></i></p>
+          <p onClick={handleRefresh} style={{ cursor: "pointer" }}>
+            <i className="fas fa-refresh" style={{ zIndex: "1000" }}></i>
+          </p>
           <div className="trips-list">
             {myTrips.length >= 1 &&
-              myTrips?.map((trip) => {
-                return (
-                  <div key={trip?.id} style={{ padding: "3px" }}>
-                    <Link
-                      style={{ textDecoration: "none", width: "300px", fontSize: "18px" }}
-                      to={`${trip?.id}`}
-                      key={trip?.id}
-                    >
-                      {days[new Date(trip?.date).getDay()]} {trip?.date}
-                    </Link>
-                    <Status color="grey" />
-                  </div>
-                );
-              })}
+              myTrips
+                ?.sort((tripA, tripB) => {
+                  var key1 = tripA.date;
+                  var key2 = tripB.date;
+
+                  if (key1 < key2) {
+                    return -1;
+                  } else if (key1 == key2) {
+                    return 0;
+                  } else {
+                    return 1;
+                  }
+                })
+                .map((trip) => {
+                  return (
+                    <div key={trip?.id} style={{ padding: "3px" }}>
+                      <Link
+                        style={{ textDecoration: "none", width: "300px", fontSize: "18px" }}
+                        to={`${trip?.id}`}
+                        key={trip?.id}
+                      >
+                        {days[new Date(trip?.date).getDay()]} {trip?.date}
+                      </Link>
+                      <Status color="grey" />
+                    </div>
+                  );
+                })}
             {myTrips.length === 0 && <p>You currently have no trips</p>}
           </div>
-          
+
           <div className="text-center">
             <Button onClick={() => navigate("/createtrip")}>Create Trip</Button>
           </div>
