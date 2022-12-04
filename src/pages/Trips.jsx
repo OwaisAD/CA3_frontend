@@ -10,6 +10,7 @@ const Trips = () => {
 
   const [myTrips, setMyTrips] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const days = {
     0: "Sunday",
@@ -22,7 +23,13 @@ const Trips = () => {
   };
 
   useEffect(() => {
-    facade.getUserTrips().then((res) => setMyTrips(res));
+    facade.getUserTrips().then((res) => setMyTrips(res).catch((err) => {
+      if (err.status) {
+        err.tripsError.then((e) => setErrorMsg(e.message));
+      } else {
+        setErrorMsg("Network error");
+      }
+    }));
   }, [refresh]);
 
   const handleRefresh = () => {
@@ -69,6 +76,8 @@ const Trips = () => {
                   );
                 })}
             {myTrips.length === 0 && <p>You currently have no trips</p>}
+            {errorMsg !== "" && <h2>{errorMsg}</h2>}
+
           </div>
 
           <div className="text-center mt-4">

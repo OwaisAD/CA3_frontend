@@ -159,15 +159,11 @@ const CreateTrip = () => {
         </Form.Select>
 
         <label htmlFor="">Travel date</label>
-        <input type="date" min={new Date().toISOString().split('T')[0]} onChange={handleTravelDate} />
-
-        <Button variant="primary" onClick={handleCreateTrip}>
-          Save
-        </Button>
-        <Button variant="danger" onClick={() => navigate("/trips")}>
-          Cancel
-        </Button>
-        <h3 style={{ color: "red" }}>{errorMsg}</h3>
+        <input
+          type="date"
+          min={new Date().toISOString().split("T")[0]}
+          onChange={handleTravelDate}
+        />
 
         {currFromAddresses.length === 1 && currToAddresses.length === 1 && (
           <GoogleMap
@@ -177,6 +173,14 @@ const CreateTrip = () => {
             toX={currToAddresses[0].data.x}
           />
         )}
+
+        <Button variant="primary" onClick={handleCreateTrip}>
+          Save
+        </Button>
+        <Button variant="danger" onClick={() => navigate("/trips")}>
+          Cancel
+        </Button>
+        <h3 style={{ color: "red" }}>{errorMsg}</h3>
       </div>
       <div className="overlay-create-trips"></div>
     </div>

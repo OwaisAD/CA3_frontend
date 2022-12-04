@@ -606,6 +606,9 @@ select {
   z-index: 1000;
   border-radius: 10px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .create-trip-component h2 {
