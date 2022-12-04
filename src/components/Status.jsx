@@ -1,8 +1,8 @@
 import React from "react";
 
-const Status = ({color}) => {
+const Status = ({color, noStyle}) => {
 
-  return <span className="dot" style={{backgroundColor: color}}></span>;
+  return noStyle ? <span className="dot2" style={{backgroundColor: color}}></span> : <span className="dot" style={{backgroundColor: color}}></span>;
 };
 
 export default Status;

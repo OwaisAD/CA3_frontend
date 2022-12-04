@@ -510,6 +510,19 @@ select {
   text-align: center;
 }
 
+.status-container {
+  margin-top: 20px;
+}
+
+.status-container div {
+  margin: 2px 0;
+}
+
+.status-container div .dot2{
+  margin-right: 15px;
+  align-items: center;
+}
+
 .refresh-btn {
   position: absolute;
   top: 15px;
@@ -553,7 +566,16 @@ select {
   /* display: inline-block; */
   z-index: 1000;
   float: right;
+}
 
+
+.dot2 {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%; 
+  /* display: inline-block; */
+  z-index: 1000;
+  float: left;
 }
 
 /*create trip*/

@@ -56,12 +56,12 @@ const Trips = () => {
                 })
                 .map((trip) => {
                   return (
-                    <div key={trip?.id} style={{ padding: "3px" }} className="trip-date-with-status">
-                      <Link
-                        className="trip-links"
-                        to={`${trip?.id}`}
-                        key={trip?.id}
-                      >
+                    <div
+                      key={trip?.id}
+                      style={{ padding: "3px" }}
+                      className="trip-date-with-status"
+                    >
+                      <Link className="trip-links" to={`${trip?.id}`} key={trip?.id}>
                         {days[new Date(trip?.date).getDay()]} {trip?.date}
                       </Link>
                       <Status color="gray" />
@@ -73,6 +73,21 @@ const Trips = () => {
 
           <div className="text-center mt-4">
             <Button onClick={() => navigate("/createtrip")}>Create Trip</Button>
+          </div>
+
+          <div className="status-container">
+            <div>
+              <Status color="green" noStyle /> Both parties accepted
+            </div>
+            <div>
+              <Status color="yellow" noStyle /> Match has been found
+            </div>
+            <div>
+              <Status color="orange" noStyle /> Pending. Waiting for other user to accept
+            </div>
+            <div>
+              <Status color="gray" noStyle /> No match found yet
+            </div>
           </div>
         </div>
       </div>
