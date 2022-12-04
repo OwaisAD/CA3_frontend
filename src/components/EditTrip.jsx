@@ -4,7 +4,7 @@ import facade from "../facades/apiFacade";
 import { isValidDate } from "../components/utils/DateValidator";
 import { useNavigate } from "react-router-dom";
 
-const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibility }) => {
+const EditTrip = ({ setEditingMode, tripId, date, startPoint, startPointCoordinates, endPoint, endPointCoordinates, flexibility }) => {
   const navigate = useNavigate();
 
   const [currFromAddress, setCurrFromAddress] = useState(startPoint);
@@ -15,7 +15,7 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
 
   const [flexibilityRadius, setFlexibilityRadius] = useState(flexibility);
 
-  const [travelDate, setTravelDate] = useState("");
+  const [travelDate, setTravelDate] = useState(date);
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -39,14 +39,14 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
     setCurrFromAddresses(addresses);
   };
 
-  const handleFlexibilityRadius = (evt) => {
-    setFlexibilityRadius(evt.target.value);
-  };
-
   const handleAddressToClicked = async (addressClicked) => {
     setCurrToAddress(addressClicked);
     const addresses = await facade.fetchAddresses(addressClicked);
     setCurrToAddresses(addresses);
+  };
+
+  const handleFlexibilityRadius = (evt) => {
+    setFlexibilityRadius(evt.target.value);
   };
 
   const handleTravelDate = (evt) => {
@@ -54,12 +54,17 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
   };
 
   // handling submit
-  const handleEditTrip = async () => {
-    if (currFromAddresses.length < 1) {
+  const handleEditTrip = async () => {   
+    if(currFromAddress == startPoint && currToAddress == endPoint && flexibilityRadius == flexibility && travelDate == date) {
+      setErrorMsg("No information changed")
+      return;
+    }
+
+    if (currFromAddress !== startPoint && currFromAddresses.length < 1) {
       setErrorMsg("Please enter a from destination");
       return;
     }
-    if (currToAddresses.length < 1) {
+    if (currToAddress !== endPoint && currToAddresses.length < 1) {
       setErrorMsg("Please enter a to destination");
       return;
     }
@@ -76,20 +81,27 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
       return;
     }
 
-    // console.log("FROM",currFromAddresses);
-    // console.log("TO",currToAddresses);
-    const fromCoordinates = `${currFromAddresses[0].data.y},${currFromAddresses[0].data.x}`;
-    const toCoordinates = `${currToAddresses[0].data.y},${currToAddresses[0].data.x}`;
+    console.log("FROM",currFromAddresses);
+    console.log("TO",currToAddresses);
+    console.log(endPointCoordinates);
+
+    const fromCoordinates = currFromAddress == startPoint ? `${startPointCoordinates.fromY},${startPointCoordinates.fromX}` : `${currFromAddresses[0].data.y},${currFromAddresses[0].data.x}`;
+    const toCoordinates = currToAddress == endPoint ? `${endPointCoordinates.toY},${endPointCoordinates.toX}` : `${currToAddresses[0].data.y},${currToAddresses[0].data.x}`;
+
+    console.log(fromCoordinates)
+    console.log(toCoordinates)
+
     const tripObject = {
       startpoint: fromCoordinates,
       endpoint: toCoordinates,
       acceptance_radius: flexibilityRadius,
       date: travelDate,
     };
-    await facade.createTrip(tripObject).then(() => {
+    await facade.editTrip(tripId, tripObject).then(() => {
       setErrorMsg("");
+      navigate(`/trips/${tripId}`);
     });
-    navigate(`/trips/${tripId}`);
+    
   };
 
   const days = {
@@ -173,7 +185,7 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, endPoint, flexibil
         type="date"
         min={new Date().toISOString().split("T")[0]}
         onChange={handleTravelDate}
-        value={date}
+        value={travelDate}
       />
 
       <div>

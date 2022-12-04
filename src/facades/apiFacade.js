@@ -140,6 +140,12 @@ function apiFacade() {
       .then(handleHttpErrors)
   }
 
+  const editTrip = async (tripId, tripObject) => {
+    const options = makeOptions("PUT", true, tripObject)
+
+    return await fetch(URL + `/trips/${tripId}`, options)
+      .then(handleHttpErrors)
+  }
 
   const makeOptions = (method, addToken, body) => {
     var opts = {
@@ -177,6 +183,7 @@ function apiFacade() {
     getUserTrips,
     deleteUserTrip,
     getUserTrip,
+    editTrip,
   };
 }
 const facade = apiFacade();
