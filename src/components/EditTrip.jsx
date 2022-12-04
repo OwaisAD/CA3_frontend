@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import facade from "../facades/apiFacade";
 import { isValidDate } from "../components/utils/DateValidator";
 import { useNavigate } from "react-router-dom";
+import GoogleMap from "./GoogleMap";
 
 const EditTrip = ({ setEditingMode, setEdited, edited, tripId, date, startPoint, startPointCoordinates, endPoint, endPointCoordinates, flexibility }) => {
   const navigate = useNavigate();
@@ -196,6 +197,16 @@ const EditTrip = ({ setEditingMode, setEdited, edited, tripId, date, startPoint,
         <Button variant="primary" onClick={handleEditTrip}>
           Save
         </Button>
+
+        {currFromAddresses.length === 1 && currToAddresses.length === 1 && (<>
+          <h3>New trip:</h3>
+          <GoogleMap
+            fromY={currFromAddresses[0].data.y}
+            fromX={currFromAddresses[0].data.x}
+            toY={currToAddresses[0].data.y}
+            toX={currToAddresses[0].data.x}
+          /></>
+        )}
 
         <h3 style={{ color: "red" }}>{errorMsg}</h3>
       </div>
