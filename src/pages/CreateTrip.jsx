@@ -174,12 +174,14 @@ const CreateTrip = () => {
           />
         )}
 
-        <Button variant="primary" onClick={handleCreateTrip}>
-          Save
-        </Button>
-        <Button variant="danger" onClick={() => navigate("/trips")}>
-          Cancel
-        </Button>
+        <div className="text-center">
+          <Button variant="primary" onClick={handleCreateTrip}>
+            Save
+          </Button>
+          <Button variant="danger" onClick={() => navigate("/trips")}>
+            Cancel
+          </Button>
+        </div>
         <h3 style={{ color: "red" }}>{errorMsg}</h3>
       </div>
       <div className="overlay-create-trips"></div>

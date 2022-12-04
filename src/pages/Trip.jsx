@@ -86,7 +86,7 @@ const Trip = () => {
                 Delete trip <i className="fas fa-trash"></i>
               </Button>
               <h2>
-                Traveldate: <br/> {days[new Date(trip?.date).getDay()]} {trip?.date}
+                Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
               </h2>
               <p>From: {startpointFetched}</p>
               <p>To: {endpointFetched}</p>
