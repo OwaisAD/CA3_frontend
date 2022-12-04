@@ -34,9 +34,11 @@ const Trips = () => {
       <div className="trips-page">
         <div className="trips-container">
           <h1>Your Trips</h1>
-          <p onClick={handleRefresh} style={{ cursor: "pointer" }}>
-            <i className="fas fa-refresh" style={{ zIndex: "1000" }}></i>
-          </p>
+          <div className="refresh-btn">
+            <p onClick={handleRefresh} style={{ cursor: "pointer" }}>
+              <i className="fas fa-refresh" style={{ zIndex: "1000" }}></i>
+            </p>
+          </div>
           <div className="trips-list">
             {myTrips.length >= 1 &&
               myTrips
@@ -56,13 +58,13 @@ const Trips = () => {
                   return (
                     <div key={trip?.id} style={{ padding: "3px" }}>
                       <Link
-                        style={{ textDecoration: "none", width: "300px", fontSize: "18px" }}
+                        className="trip-links"
                         to={`${trip?.id}`}
                         key={trip?.id}
                       >
                         {days[new Date(trip?.date).getDay()]} {trip?.date}
                       </Link>
-                      <Status color="grey" />
+                      <Status color="gray" />
                     </div>
                   );
                 })}

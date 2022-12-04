@@ -494,6 +494,34 @@ select {
   flex-direction: column;
 }
 
+.trips-container {
+  max-width: 500px;
+  width: 100%;
+  min-height: 400px;
+  background-color: white;
+  margin: auto;
+  z-index: 1000;
+  padding: 50px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.trips-container h1 {
+  text-align: center;
+}
+
+.refresh-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.trip-links {
+  text-decoration: none;
+  font-size: 18px;
+  /* style={{ textDecoration: "none", width: "300px", fontSize: "18px" }} */
+}
+
 
 .overlay-trips {
   position: absolute;
@@ -506,14 +534,7 @@ select {
 }
 
 
-.trips-container {
-  width: 500px;
-  height: 600px;
-  background-color: white;
-  margin: auto;
-  z-index: 1000;
-  padding: 50px;
-}
+
 
 .trips-list {
   display: flex;
