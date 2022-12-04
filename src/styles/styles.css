@@ -598,11 +598,18 @@ select {
 }
 
 .create-trip-component {
-  width: 500px;
-  height: 600px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 500px;
   background-color: white;
   margin: auto;
   z-index: 1000;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.create-trip-component h2 {
+  text-align: center;
 }
 
 .autocomplete {
