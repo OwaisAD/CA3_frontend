@@ -21,15 +21,17 @@ function isValidDate(dateString)
         return false;
     }
 
-    if(month < currentMonth) {
+    if(month < currentMonth && year <= currentYear) {
         return false;
     }
 
-    if(day < currentDay) {
+    if(day < currentDay && year <= currentYear) {
         return false;
     }
 
-    return true;    
+    console.log("reached");
+    return false;
+    //return true;    
 }
 export {
     isValidDate,

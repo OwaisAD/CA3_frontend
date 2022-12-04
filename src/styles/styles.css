@@ -495,7 +495,7 @@ select {
 }
 
 .trips-container {
-  max-width: 500px;
+  max-width: 475px;
   width: 100%;
   min-height: 400px;
   background-color: white;
@@ -519,7 +519,6 @@ select {
 .trip-links {
   text-decoration: none;
   font-size: 18px;
-  /* style={{ textDecoration: "none", width: "300px", fontSize: "18px" }} */
 }
 
 

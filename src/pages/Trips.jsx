@@ -71,7 +71,7 @@ const Trips = () => {
             {myTrips.length === 0 && <p>You currently have no trips</p>}
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-4">
             <Button onClick={() => navigate("/createtrip")}>Create Trip</Button>
           </div>
         </div>
