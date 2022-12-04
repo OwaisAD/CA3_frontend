@@ -76,18 +76,17 @@ const Trip = () => {
     <>
       <div className="trip-page">
         {!editingMode && 
-        <div className="trip-page-container" style={{ borderLeft: "8px solid grey" }}>
+        <div className="trip-page-container" style={{ borderLeft: "10px solid grey" }}>
           {error === "" ? (
             <>
-              <Button
+              <Button className="delete-trip"
                 onClick={handleDeleteTrip}
-                style={{ position: "absolute", top: "0", right: "0" }}
                 variant="danger"
               >
                 Delete trip <i className="fas fa-trash"></i>
               </Button>
               <h2>
-                Date: {days[new Date(trip?.date).getDay()]} {trip?.date}
+                Traveldate: <br/> {days[new Date(trip?.date).getDay()]} {trip?.date}
               </h2>
               <p>From: {startpointFetched}</p>
               <p>To: {endpointFetched}</p>
@@ -106,7 +105,6 @@ const Trip = () => {
         </div>}
 
         {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} date={trip?.date} startPoint={startpointFetched} startPointCoordinates={{fromX, fromY}} endPoint={endpointFetched} endPointCoordinates={{toX, toY}} flexibility={trip?.acceptance_radius} setEdited={setEdited} edited={edited}/>}
-
 
       </div>
       <div className="overlay-trip-page"></div>

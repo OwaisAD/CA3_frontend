@@ -56,7 +56,7 @@ const Trips = () => {
                 })
                 .map((trip) => {
                   return (
-                    <div key={trip?.id} style={{ padding: "3px" }}>
+                    <div key={trip?.id} style={{ padding: "3px" }} className="trip-date-with-status">
                       <Link
                         className="trip-links"
                         to={`${trip?.id}`}

@@ -516,6 +516,10 @@ select {
   right: 15px;
 }
 
+.trip-date-with-status {
+  margin: 2px 0;
+}
+
 .trip-links {
   text-decoration: none;
   font-size: 18px;
@@ -633,12 +637,21 @@ select {
 }
 
 .trip-page-container {
- width: 600px;
- height: 400px;
+ max-width: 700px;
+ width: 100%;
+ min-height: 400px;
  background-color: white;
  z-index: 1000;
  margin: auto;
  position: relative;
+ border-radius: 10px;
+ padding: 4px;
+}
+
+.delete-trip {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 .editing-mode-container {
@@ -647,7 +660,6 @@ select {
   background-color: white;
   z-index: 1000;
   margin: auto;
-
 }
 
 .editing-mode-container {
