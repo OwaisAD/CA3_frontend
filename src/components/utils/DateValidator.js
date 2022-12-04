@@ -29,9 +29,7 @@ function isValidDate(dateString)
         return false;
     }
 
-    console.log("reached");
-    return false;
-    //return true;    
+    return true;    
 }
 export {
     isValidDate,
