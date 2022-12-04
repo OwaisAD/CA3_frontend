@@ -71,6 +71,7 @@ function Header({ loggedIn, setLoggedIn, setCreateAccountClicked }) {
             {loggedIn && (
               <>
                 <NavButton text="Trips" iconClass="fas fa-car" to="trips" />
+                <NavButton text="" iconClass="fa fa-plus-circle" to="createtrip" />
               </>
             )}
           </div>
