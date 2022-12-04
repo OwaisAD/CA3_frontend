@@ -4,7 +4,7 @@ import facade from "../facades/apiFacade";
 import { isValidDate } from "../components/utils/DateValidator";
 import { useNavigate } from "react-router-dom";
 
-const EditTrip = ({ setEditingMode, tripId, date, startPoint, startPointCoordinates, endPoint, endPointCoordinates, flexibility }) => {
+const EditTrip = ({ setEditingMode, setEdited, edited, tripId, date, startPoint, startPointCoordinates, endPoint, endPointCoordinates, flexibility }) => {
   const navigate = useNavigate();
 
   const [currFromAddress, setCurrFromAddress] = useState(startPoint);
@@ -99,7 +99,8 @@ const EditTrip = ({ setEditingMode, tripId, date, startPoint, startPointCoordina
     };
     await facade.editTrip(tripId, tripObject).then(() => {
       setErrorMsg("");
-      navigate(`/trips/${tripId}`);
+      setEdited(!edited)
+      setEditingMode(false)
     });
     
   };

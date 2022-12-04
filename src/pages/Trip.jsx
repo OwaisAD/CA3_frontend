@@ -20,6 +20,7 @@ const Trip = () => {
   const [endpointFetched, setEndpointFetched] = useState("");
 
   const [editingMode, setEditingMode] = useState(false)
+  const [edited, setEdited] = useState(false)
 
   const days = {
     0: "Sunday",
@@ -61,7 +62,7 @@ const Trip = () => {
       .catch((err) => {
         err.fullError.then((e) => setError(e.message));
       });
-  }, []);
+  }, [edited]);
 
   const handleDeleteTrip = async () => {
     let confirmed = confirm("Are you sure you want to delete this trip...?");
@@ -104,7 +105,7 @@ const Trip = () => {
           
         </div>}
 
-        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} date={trip?.date} startPoint={startpointFetched} startPointCoordinates={{fromX, fromY}} endPoint={endpointFetched} endPointCoordinates={{toX, toY}} flexibility={trip?.acceptance_radius}/>}
+        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} date={trip?.date} startPoint={startpointFetched} startPointCoordinates={{fromX, fromY}} endPoint={endpointFetched} endPointCoordinates={{toX, toY}} flexibility={trip?.acceptance_radius} setEdited={setEdited} edited={edited}/>}
 
 
       </div>
