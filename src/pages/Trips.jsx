@@ -23,13 +23,7 @@ const Trips = () => {
   };
 
   useEffect(() => {
-    facade.getUserTrips().then((res) => setMyTrips(res).catch((err) => {
-      if (err.status) {
-        err.tripsError.then((e) => setErrorMsg(e.message));
-      } else {
-        setErrorMsg("Network error");
-      }
-    }));
+    facade.getUserTrips().then((res) => setMyTrips(res));
   }, [refresh]);
 
   const handleRefresh = () => {
