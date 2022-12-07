@@ -19,8 +19,8 @@ const Trip = () => {
   const [startpointFetched, setStartpointFetched] = useState("");
   const [endpointFetched, setEndpointFetched] = useState("");
 
-  const [editingMode, setEditingMode] = useState(false)
-  const [edited, setEdited] = useState(false)
+  const [editingMode, setEditingMode] = useState(false);
+  const [edited, setEdited] = useState(false);
 
   const days = {
     0: "Sunday",
@@ -50,14 +50,16 @@ const Trip = () => {
         setToY(toArr?.[0]);
 
         //fetching the from address based on x and y
-        fetchAddressesForNames(res.startpoint.split(",")[1], res.startpoint.split(",")[0]).then(
-          (res) => setStartpointFetched(res)
-        );
+        fetchAddressesForNames(
+          res.startpoint.split(",")[1],
+          res.startpoint.split(",")[0]
+        ).then((res) => setStartpointFetched(res));
 
         //fetching the to address based on x and y
-        fetchAddressesForNames(res.endpoint.split(",")[1], res.endpoint.split(",")[0]).then((res) =>
-          setEndpointFetched(res)
-        );
+        fetchAddressesForNames(
+          res.endpoint.split(",")[1],
+          res.endpoint.split(",")[0]
+        ).then((res) => setEndpointFetched(res));
       })
       .catch((err) => {
         err.fullError.then((e) => setError(e.message));
@@ -75,38 +77,70 @@ const Trip = () => {
   return (
     <>
       <div className="trip-page">
-        {!editingMode && 
-        <div className="trip-page-container" style={{ borderLeft: "10px solid grey" }}>
-          {error === "" ? (
-            <>
-              <Button className="delete-trip"
-                onClick={handleDeleteTrip}
-                variant="danger"
+        {trip?.status === "no matches" && (
+          <>
+            {!editingMode && (
+              <div
+                className="trip-page-container"
+                style={{ borderLeft: "10px solid grey" }}
               >
-                Delete trip <i className="fas fa-trash"></i>
-              </Button>
-              <h2>
-                Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
-              </h2>
-              <p>From: {startpointFetched}</p>
-              <p>To: {endpointFetched}</p>
-              <p>Flexibility radius: {trip?.acceptance_radius}</p>
-              <Button onClick={() => setEditingMode(true)}>Edit trip</Button>
-              {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
-                <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
-              )}
-            </>
-          ) : (
-            <>
-              <h2>{error}</h2>
-            </>
-          )}
-          
-        </div>}
+                {error === "" ? (
+                  <>
+                    <Button
+                      className="delete-trip"
+                      onClick={handleDeleteTrip}
+                      variant="danger"
+                    >
+                      Delete trip <i className="fas fa-trash"></i>
+                    </Button>
+                    <h2>
+                      Travel date: {days[new Date(trip?.date).getDay()]}{" "}
+                      {trip?.date}
+                    </h2>
+                    <p>From: {startpointFetched}</p>
+                    <p>To: {endpointFetched}</p>
+                    <p>Flexibility radius: {trip?.acceptance_radius}</p>
+                    <Button onClick={() => setEditingMode(true)}>
+                      Edit trip
+                    </Button>
+                    {fromX !== "" &&
+                      fromY !== "" &&
+                      toX !== "" &&
+                      toY !== "" && (
+                        <GoogleMap
+                          fromX={fromX}
+                          fromY={fromY}
+                          toX={toX}
+                          toY={toY}
+                        />
+                      )}
+                  </>
+                ) : (
+                  <>
+                    <h2>{error}</h2>
+                  </>
+                )}
+              </div>
+            )}
 
-        {editingMode && <EditTrip setEditingMode={setEditingMode} tripId={params.id} date={trip?.date} startPoint={startpointFetched} startPointCoordinates={{fromX, fromY}} endPoint={endpointFetched} endPointCoordinates={{toX, toY}} flexibility={trip?.acceptance_radius} setEdited={setEdited} edited={edited}/>}
-
+            {editingMode && (
+              <EditTrip
+                setEditingMode={setEditingMode}
+                tripId={params.id}
+                date={trip?.date}
+                startPoint={startpointFetched}
+                startPointCoordinates={{ fromX, fromY }}
+                endPoint={endpointFetched}
+                endPointCoordinates={{ toX, toY }}
+                flexibility={trip?.acceptance_radius}
+                setEdited={setEdited}
+                edited={edited}
+              />
+            )}
+          </>
+        )}
       </div>
+
       <div className="overlay-trip-page"></div>
     </>
   );

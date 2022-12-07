@@ -22,6 +22,13 @@ const Trips = () => {
     6: "Saturday",
   };
 
+  const statusColor = {
+    "no matches": "gray",
+    match: "yellow",
+    pending: "orange",
+    accepted: "green",
+  };
+
   useEffect(() => {
     facade.getUserTrips().then((res) => setMyTrips(res));
   }, [refresh]);
@@ -62,16 +69,20 @@ const Trips = () => {
                       style={{ padding: "3px" }}
                       className="trip-date-with-status"
                     >
-                      <Link className="trip-links" to={`${trip?.id}`} key={trip?.id}>
+                      <Link
+                        className="trip-links"
+                        to={`${trip?.id}`}
+                        key={trip?.id}
+                      >
                         {days[new Date(trip?.date).getDay()]} {trip?.date}
                       </Link>
-                      <Status color="gray" />
+                      <Status color={statusColor[trip?.status]} />
+                      {console.log(statusColor[trip?.status])}
                     </div>
                   );
                 })}
             {myTrips.length === 0 && <p>You currently have no trips</p>}
             {errorMsg !== "" && <h2>{errorMsg}</h2>}
-
           </div>
 
           <div className="text-center mt-4">
@@ -86,7 +97,8 @@ const Trips = () => {
               <Status color="yellow" noStyle /> Match has been found
             </div>
             <div>
-              <Status color="orange" noStyle /> Pending. Waiting for other user to accept
+              <Status color="orange" noStyle /> Pending. Waiting for other user
+              to accept
             </div>
             <div>
               <Status color="gray" noStyle /> No match found yet
