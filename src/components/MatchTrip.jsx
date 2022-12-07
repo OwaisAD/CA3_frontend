@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import facade from "../facades/apiFacade";
@@ -18,6 +18,12 @@ const MatchTrip = ({
 }) => {
   const navigate = useNavigate();
 
+  const [proposalId, setProposalId] = useState(0);
+
+  const handleProposalIdChange = (evt) => {
+    setProposalId(evt.target.value);
+  };
+
   const handleDeleteTrip = async () => {
     let confirmed = confirm("Are you sure you want to delete this trip...?");
     if (confirmed) {
@@ -27,9 +33,12 @@ const MatchTrip = ({
   };
 
   const handleAcceptTrip = async () => {
-    let confirmed = confirm("Are you sure you want to accept the trip?");
+    if (proposalId < 1) return;
+    let confirmed = confirm(
+      "Are you sure you want to accept with the proposal id " + proposalId + "?"
+    );
     if (confirmed) {
-      await facade.acceptTrip(tripId);
+      await facade.acceptTrip(tripId, proposalId);
       navigate("/trips");
     }
   };
@@ -58,10 +67,9 @@ const MatchTrip = ({
             <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
           )}
           <div>
-            <h4>
-              These are the following matches you have, select a proposal:
-            </h4>
-            <select>
+            <h4>These are the following matches you have:</h4>
+            <select defaultValue={"-"} onChange={handleProposalIdChange}>
+              <option value="-"> -- Select an option -- </option>
               {trip?.proposals.map((proposal) => {
                 return (
                   <option value={proposal?.id} key={proposal?.id}>

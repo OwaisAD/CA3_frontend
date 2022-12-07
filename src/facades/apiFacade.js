@@ -110,10 +110,10 @@ function apiFacade() {
       .then(handleHttpErrors)
   }
 
-  const acceptTrip = async (id) => {
+  const acceptTrip = async (id,proposalId) => {
     const options = makeOptions("PUT", true)
 
-    return await fetch(URL + `/trips/${id}/proposal/accept`,options)
+    return await fetch(URL + `/trips/${id}/proposal/${proposalId}/accept`,options)
     .then(handleHttpErrors)
   }
 
