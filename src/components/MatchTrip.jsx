@@ -57,6 +57,7 @@ const MatchTrip = ({
           >
             Delete trip <i className="fas fa-trash"></i>
           </Button>
+          <h1>Match found!</h1>
           <h2>
             Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h2>
