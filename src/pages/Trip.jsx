@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import facade from "../facades/apiFacade";
 import GoogleMap from "../components/GoogleMap";
 import EditTrip from "../components/EditTrip";
+import MatchTrip from "../components/MatchTrip";
 
 const Trip = () => {
   const [trip, setTrip] = useState({});
@@ -139,8 +140,24 @@ const Trip = () => {
             )}
           </>
         )}
-      </div>
 
+        {trip?.status === "match" && (
+          <>
+            <MatchTrip
+              tripId={params.id}
+              error={error}
+              days={days}
+              trip={trip}
+              startpointFetched={startpointFetched}
+              endpointFetched={endpointFetched}
+              toX={toX}
+              toY={toY}
+              fromX={fromX}
+              fromY={fromY}
+            />
+          </>
+        )}
+      </div>
       <div className="overlay-trip-page"></div>
     </>
   );
