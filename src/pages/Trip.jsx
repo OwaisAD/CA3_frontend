@@ -5,6 +5,7 @@ import facade from "../facades/apiFacade";
 import GoogleMap from "../components/GoogleMap";
 import EditTrip from "../components/EditTrip";
 import MatchTrip from "../components/MatchTrip";
+import AcceptedTrip from "../components/AcceptedTrip";
 
 const Trip = () => {
   const [trip, setTrip] = useState({});
@@ -51,16 +52,14 @@ const Trip = () => {
         setToY(toArr?.[0]);
 
         //fetching the from address based on x and y
-        fetchAddressesForNames(
-          res.startpoint.split(",")[1],
-          res.startpoint.split(",")[0]
-        ).then((res) => setStartpointFetched(res));
+        fetchAddressesForNames(res.startpoint.split(",")[1], res.startpoint.split(",")[0]).then(
+          (res) => setStartpointFetched(res)
+        );
 
         //fetching the to address based on x and y
-        fetchAddressesForNames(
-          res.endpoint.split(",")[1],
-          res.endpoint.split(",")[0]
-        ).then((res) => setEndpointFetched(res));
+        fetchAddressesForNames(res.endpoint.split(",")[1], res.endpoint.split(",")[0]).then((res) =>
+          setEndpointFetched(res)
+        );
       })
       .catch((err) => {
         err.fullError.then((e) => setError(e.message));
@@ -81,40 +80,22 @@ const Trip = () => {
         {trip?.status === "no matches" && (
           <>
             {!editingMode && (
-              <div
-                className="trip-page-container"
-                style={{ borderLeft: "10px solid grey" }}
-              >
+              <div className="trip-page-container" style={{ borderLeft: "10px solid grey" }}>
                 {error === "" ? (
                   <>
-                    <Button
-                      className="delete-trip"
-                      onClick={handleDeleteTrip}
-                      variant="danger"
-                    >
+                    <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
                       Delete trip <i className="fas fa-trash"></i>
                     </Button>
                     <h2>
-                      Travel date: {days[new Date(trip?.date).getDay()]}{" "}
-                      {trip?.date}
+                      Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
                     </h2>
                     <p>From: {startpointFetched}</p>
                     <p>To: {endpointFetched}</p>
                     <p>Flexibility radius: {trip?.acceptance_radius}</p>
-                    <Button onClick={() => setEditingMode(true)}>
-                      Edit trip
-                    </Button>
-                    {fromX !== "" &&
-                      fromY !== "" &&
-                      toX !== "" &&
-                      toY !== "" && (
-                        <GoogleMap
-                          fromX={fromX}
-                          fromY={fromY}
-                          toX={toX}
-                          toY={toY}
-                        />
-                      )}
+                    <Button onClick={() => setEditingMode(true)}>Edit trip</Button>
+                    {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
+                      <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+                    )}
                   </>
                 ) : (
                   <>
@@ -144,6 +125,23 @@ const Trip = () => {
         {trip?.status === "match" && (
           <>
             <MatchTrip
+              tripId={params.id}
+              error={error}
+              days={days}
+              trip={trip}
+              startpointFetched={startpointFetched}
+              endpointFetched={endpointFetched}
+              toX={toX}
+              toY={toY}
+              fromX={fromX}
+              fromY={fromY}
+            />
+          </>
+        )}
+
+        {trip?.status === "accepted" && (
+          <>
+            <AcceptedTrip
               tripId={params.id}
               error={error}
               days={days}
