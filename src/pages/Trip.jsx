@@ -6,6 +6,7 @@ import GoogleMap from "../components/GoogleMap";
 import EditTrip from "../components/EditTrip";
 import MatchTrip from "../components/MatchTrip";
 import AcceptedTrip from "../components/AcceptedTrip";
+import PendingTrip from "../components/PendingTrip";
 
 const Trip = () => {
   const [trip, setTrip] = useState({});
@@ -125,6 +126,23 @@ const Trip = () => {
         {trip?.status === "match" && (
           <>
             <MatchTrip
+              tripId={params.id}
+              error={error}
+              days={days}
+              trip={trip}
+              startpointFetched={startpointFetched}
+              endpointFetched={endpointFetched}
+              toX={toX}
+              toY={toY}
+              fromX={fromX}
+              fromY={fromY}
+            />
+          </>
+        )}
+
+        {trip?.status === "pending" && (
+          <>
+            <PendingTrip
               tripId={params.id}
               error={error}
               days={days}
