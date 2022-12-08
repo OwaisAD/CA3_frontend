@@ -1,5 +1,6 @@
 import React from "react";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import Who from "../images/who.jpeg";
 
 function About() {
   return (
@@ -15,15 +16,18 @@ function About() {
           <div className="about-left">
             <p>We will answer ASAP on</p>
             <p>
-              <FaEnvelope size={20}/>
-              <a href="mailto:support@ecodrivr.dk" style={{ textDecoration: "none" }}>
+              <FaEnvelope size={20} />
+              <a href="mailto:support@ecodrivr.dk" style={{ textDecoration: "none" }}>{' '}
                 support@ecodrivr.dk
               </a>
             </p>
             <hr />
             <p>Call us on</p>
             <p>
-              <FaPhoneAlt size={20} /> <a href="tel:+45 00 00 00 00" style={{ textDecoration: "none" }}>+45 00 00 00 00</a>
+              <FaPhoneAlt size={20} />{" "}
+              <a href="tel:+45 00 00 00 00" style={{ textDecoration: "none" }}>
+                +45 00 00 00 00
+              </a>
             </p>
             <hr />
             <p>Opening Hours</p>
@@ -33,24 +37,26 @@ function About() {
 
           <div className="about-right">
             <h3>The Team</h3>
-            <div>
-              <img src="" alt="" />
-              <p>Andreas</p>
-            </div>
+            <div className="persons">
+              <div className="person-container">
+                <img src={Who} alt="" />
+                <p>Andreas</p>
+              </div>
 
-            <div>
-              <img src="" alt="" />
-              <p>Daniel</p>
-            </div>
+              <div className="person-container">
+                <img src={Who} alt="" />
+                <p>Daniel</p>
+              </div>
 
-            <div>
-              <img src="" alt="" />
-              <p>Owais</p>
-            </div>
+              <div className="person-container">
+                <img src={Who} alt="" />
+                <p>Owais</p>
+              </div>
 
-            <div>
-              <img src="" alt="" />
-              <p>Thomas</p>
+              <div className="person-container">
+                <img src={Who} alt="" />
+                <p>Thomas</p>
+              </div>
             </div>
           </div>
         </div>

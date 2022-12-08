@@ -705,13 +705,53 @@ select {
 
 /* about page */
 .about-container {
-  z-index: 1000;
   display: flex;
+  justify-content: space-evenly;
+  z-index: 1000;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.about-container .about-left, .about-right {
+  margin-bottom: 15px;
 }
 
 .about-left {
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   background-color: white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.about-right {}
+.about-right {
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.persons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.person-container {
+  border: 1px solid rgba(128, 128, 128, 0.274);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 10px;
+  width: 275px;
+  margin: 5px 0;
+}
+
+.person-container img {
+  width: 65px;
+  border-radius: 8px;
+}
