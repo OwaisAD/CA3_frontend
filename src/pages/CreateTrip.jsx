@@ -100,8 +100,11 @@ const CreateTrip = () => {
           err.fullError.then((e) => {
             if(e.message === "Token not valid (timed out?)") {
               setErrorMsg("Please login again")
-              setTimeout(facade.logout, 4000)
-              navigate("/")
+              setTimeout(() => {
+                facade.logout()
+                navigate("/login")
+              }, 4000)
+
             }
             //setErrorMsg(e.message);
           });

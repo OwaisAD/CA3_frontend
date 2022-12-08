@@ -5,6 +5,7 @@ import facade from "../../facades/apiFacade";
 import Button from "../button/Button";
 
 const LoginComponent = ({
+  loggedIn,
   setLoggedIn,
   setErrorMsg,
   createAccountClicked,

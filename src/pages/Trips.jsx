@@ -30,7 +30,23 @@ const Trips = () => {
   };
 
   useEffect(() => {
-    facade.getUserTrips().then((res) => setMyTrips(res));
+    facade.getUserTrips().then((res) => setMyTrips(res))
+      .catch(err => {
+        console.log(err);
+        if (err.status) {
+          err.fullError.then((e) => {
+            if(e.message === "Token not valid (timed out?)") {
+              setErrorMsg("Please login again")
+              setTimeout(() => {
+                facade.logout()
+                navigate("/login")
+              }, 4000)
+            }
+          });
+        } else {
+          setErrorMsg("Network error");
+        }
+      });
   }, [refresh]);
 
   const handleRefresh = () => {
