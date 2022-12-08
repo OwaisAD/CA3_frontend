@@ -98,72 +98,81 @@ const CreateTrip = () => {
     <div className="create-trip-page">
       <div className="create-trip-component">
         <h2>Create trip</h2>
-        <label htmlFor="">From</label>
-        <div className="autocomplete">
-          <input
-            style={{ width: "500px" }}
-            id="fromInput"
-            type="text"
-            name="fromAddress"
-            placeholder="Start location"
-            onChange={onChangeFrom}
-            value={currFromAddress}
-          />
-          <div className="autocomplete-items">
-            {currFromAddresses.length > 1 &&
-              currFromAddresses
-                .map((address, idx) => {
-                  return (
-                    <div key={idx} onClick={() => handleAddressFromClicked(address.forslagstekst)}>
-                      <p>{address.forslagstekst}</p>
-                    </div>
-                  );
-                })
-                .slice(0, 10)}
+        <label htmlFor="">
+          Where do you want to travel from?
+          <div className="autocomplete">
+            <input
+              id="fromInput"
+              type="text"
+              name="fromAddress"
+              placeholder="Start location"
+              onChange={onChangeFrom}
+              value={currFromAddress}
+            />
+            <div className="autocomplete-items">
+              {currFromAddresses.length > 1 &&
+                currFromAddresses
+                  .map((address, idx) => {
+                    return (
+                      <div
+                        key={idx}
+                        onClick={() => handleAddressFromClicked(address.forslagstekst)}
+                      >
+                        <p>{address.forslagstekst}</p>
+                      </div>
+                    );
+                  })
+                  .slice(0, 10)}
+            </div>
           </div>
-        </div>
+        </label>
 
-        <label htmlFor="">To</label>
-        <div className="autocomplete">
-          <input
-            style={{ width: "500px" }}
-            id="toInput"
-            type="text"
-            name="toAddress"
-            placeholder="End location"
-            onChange={onChangeTo}
-            value={currToAddress}
-          />
-          <div className="autocomplete-items">
-            {currToAddresses.length > 1 &&
-              currToAddresses
-                .map((address, idx) => {
-                  return (
-                    <div key={idx} onClick={() => handleAddressToClicked(address.forslagstekst)}>
-                      <p>{address.forslagstekst}</p>
-                    </div>
-                  );
-                })
-                .slice(0, 10)}
+        <label htmlFor="">
+          Where do you want to travel to?
+          <div className="autocomplete">
+            <input
+              id="toInput"
+              type="text"
+              name="toAddress"
+              placeholder="End location"
+              onChange={onChangeTo}
+              value={currToAddress}
+            />
+            <div className="autocomplete-items">
+              {currToAddresses.length > 1 &&
+                currToAddresses
+                  .map((address, idx) => {
+                    return (
+                      <div key={idx} onClick={() => handleAddressToClicked(address.forslagstekst)}>
+                        <p>{address.forslagstekst}</p>
+                      </div>
+                    );
+                  })
+                  .slice(0, 10)}
+            </div>
           </div>
-        </div>
+        </label>
 
-        <label htmlFor="">Flexibility radius</label>
-        <Form.Select onChange={handleFlexibilityRadius}>
-          <option value=""> -- Select an option -- </option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-        </Form.Select>
+        <label htmlFor="">
+          Flexibility radius
+          <Form.Select onChange={handleFlexibilityRadius}>
+            <option value="">Select an option (kms)</option>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+          </Form.Select>
+        </label>
 
-        <label htmlFor="">Travel date</label>
-        <input
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
-          onChange={handleTravelDate}
-        />
+        <label htmlFor="">
+          Travel date
+          <input
+            type="date"
+            min={new Date().toISOString().split("T")[0]}
+            onChange={handleTravelDate}
+          />
+        </label>
 
         {currFromAddresses.length === 1 && currToAddresses.length === 1 && (
           <GoogleMap
