@@ -14,10 +14,12 @@ function About() {
 
         <div className="about-container">
           <div className="about-left">
+            <h3>Contact us</h3>
             <p>We will answer ASAP on</p>
             <p>
               <FaEnvelope size={20} />
-              <a href="mailto:support@ecodrivr.dk" style={{ textDecoration: "none" }}>{' '}
+              <a href="mailto:support@ecodrivr.dk" style={{ textDecoration: "none" }}>
+                {" "}
                 support@ecodrivr.dk
               </a>
             </p>
@@ -36,7 +38,7 @@ function About() {
           </div>
 
           <div className="about-right">
-            <h3>The Team</h3>
+            <h3>The EcoDriver Team</h3>
             <div className="persons">
               <div className="person-container">
                 <img src={Who} alt="" />
