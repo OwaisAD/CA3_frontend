@@ -702,3 +702,16 @@ select {
   display: flex;
   flex-direction: column;
 }
+
+/* about page */
+.about-container {
+  z-index: 1000;
+  display: flex;
+}
+
+.about-left {
+  width: 400px;
+  background-color: white;
+}
+
+.about-right {}
