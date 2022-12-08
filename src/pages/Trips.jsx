@@ -98,7 +98,7 @@ const Trips = () => {
                   );
                 })}
             {myTrips.length === 0 && <p>You currently have no trips</p>}
-            {errorMsg !== "" && <h2>{errorMsg}</h2>}
+            {errorMsg !== "" && <h2 style={{color: "red"}}>{errorMsg}</h2>}
           </div>
 
           <div className="text-center mt-4">
