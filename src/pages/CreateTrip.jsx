@@ -154,7 +154,7 @@ const CreateTrip = () => {
         </label>
 
         <label htmlFor="">
-          Flexibility radius
+          How far from your start and end locations you can do a drive-by?
           <Form.Select onChange={handleFlexibilityRadius}>
             <option value="">Select an option (kms)</option>
             <option value={1}>1</option>
