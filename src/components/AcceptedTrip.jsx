@@ -44,17 +44,10 @@ const AcceptedTrip = ({
   };
 
   return (
-    <div
-      className="trip-page-container"
-      style={{ borderLeft: "10px solid green" }}
-    >
+    <div className="trip-page-container" style={{ borderLeft: "10px solid green" }}>
       {error === "" ? (
         <>
-          <Button
-            className="delete-trip"
-            onClick={handleDeleteTrip}
-            variant="danger"
-          >
+          <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
             Delete trip <i className="fas fa-trash"></i>
           </Button>
           <h1>You and X accepted the trip!</h1>
@@ -65,7 +58,9 @@ const AcceptedTrip = ({
           <p>To: {endpointFetched}</p>
           <p>Flexibility radius: {trip?.acceptance_radius}</p>
           {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
-            <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+            <div className="text-center">
+              <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+            </div>
           )}
         </>
       ) : (

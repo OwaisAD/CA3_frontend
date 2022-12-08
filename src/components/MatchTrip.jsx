@@ -34,9 +34,7 @@ const MatchTrip = ({
 
   const handleAcceptTrip = async () => {
     if (proposalId < 1) return;
-    let confirmed = confirm(
-      "Are you sure you want to accept proposal with id " + proposalId + "?"
-    );
+    let confirmed = confirm("Are you sure you want to accept proposal with id " + proposalId + "?");
     if (confirmed) {
       await facade.acceptTrip(tripId, proposalId);
       navigate("/trips");
@@ -45,9 +43,7 @@ const MatchTrip = ({
 
   const handleRejectTrip = async () => {
     if (proposalId < 1) return;
-    let confirmed = confirm(
-      "Are you sure you want to reject proposal with id " + proposalId + "?"
-    );
+    let confirmed = confirm("Are you sure you want to reject proposal with id " + proposalId + "?");
     if (confirmed) {
       await facade.rejectTrip(tripId, proposalId);
       navigate("/trips");
@@ -55,17 +51,10 @@ const MatchTrip = ({
   };
 
   return (
-    <div
-      className="trip-page-container"
-      style={{ borderLeft: "10px solid yellow" }}
-    >
+    <div className="trip-page-container" style={{ borderLeft: "10px solid yellow" }}>
       {error === "" ? (
         <>
-          <Button
-            className="delete-trip"
-            onClick={handleDeleteTrip}
-            variant="danger"
-          >
+          <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
             Delete trip <i className="fas fa-trash"></i>
           </Button>
           <h1>Match found!</h1>
@@ -76,7 +65,9 @@ const MatchTrip = ({
           <p>To: {endpointFetched}</p>
           <p>Flexibility radius: {trip?.acceptance_radius}</p>
           {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
-            <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+            <div className="text-center">
+              <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+            </div>
           )}
           <div>
             <h4>These are the following matches you have:</h4>
@@ -95,7 +86,9 @@ const MatchTrip = ({
             <Button variant="primary" onClick={handleAcceptTrip}>
               Accept
             </Button>
-            <Button variant="danger" onClick={handleRejectTrip}>Reject</Button>
+            <Button variant="danger" onClick={handleRejectTrip}>
+              Reject
+            </Button>
           </div>
         </>
       ) : (
