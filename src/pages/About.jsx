@@ -13,7 +13,7 @@ function About() {
 
         <div className="about-container">
           <div className="about-left">
-            <p>Vi svarer hurtigst muligt på:</p>
+            <p>We will answer ASAP on</p>
             <p>
               <FaEnvelope size={20}/>
               <a href="mailto:support@ecodrivr.dk" style={{ textDecoration: "none" }}>
@@ -21,17 +21,18 @@ function About() {
               </a>
             </p>
             <hr />
-            <p>Ring til os</p>
+            <p>Call us on</p>
             <p>
               <FaPhoneAlt size={20} /> <a href="tel:+45 00 00 00 00" style={{ textDecoration: "none" }}>+45 00 00 00 00</a>
             </p>
             <hr />
-            <p>Åbningstid</p>
-            <p>Mandag-Fredag</p>
+            <p>Opening Hours</p>
+            <p>Monday-Friday</p>
             <p>10:00-12:00, 13-00-18:00</p>
           </div>
 
           <div className="about-right">
+            <h3>The Team</h3>
             <div>
               <img src="" alt="" />
               <p>Andreas</p>
