@@ -95,7 +95,9 @@ const Trip = () => {
                     <p>Flexibility radius: {trip?.acceptance_radius}</p>
                     <Button onClick={() => setEditingMode(true)}>Edit trip</Button>
                     {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
-                      <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+                      <div className="text-center">
+                        <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
+                      </div>
                     )}
                   </>
                 ) : (
