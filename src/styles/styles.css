@@ -727,7 +727,7 @@ select {
 }
 
 .about-right {
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   background-color: white;
   padding: 10px;
@@ -747,8 +747,8 @@ select {
   align-items: center;
   padding: 5px;
   gap: 10px;
-  width: 275px;
-  margin: 5px 0;
+  width: 225px;
+  margin: 5px;
 }
 
 .person-container img {
