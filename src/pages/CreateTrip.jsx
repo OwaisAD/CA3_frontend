@@ -58,11 +58,11 @@ const CreateTrip = () => {
   // handling submit
   const handleCreateTrip = async () => {
     if (currFromAddresses.length < 1) {
-      setErrorMsg("Please enter a from destination");
+      setErrorMsg("Please enter a from location");
       return;
     }
     if (currToAddresses.length < 1) {
-      setErrorMsg("Please enter a to destination");
+      setErrorMsg("Please enter a to location");
       return;
     }
     if (flexibilityRadius === 0) {
@@ -175,23 +175,26 @@ const CreateTrip = () => {
         </label>
 
         {currFromAddresses.length === 1 && currToAddresses.length === 1 && (
-          <GoogleMap
-            fromY={currFromAddresses[0].data.y}
-            fromX={currFromAddresses[0].data.x}
-            toY={currToAddresses[0].data.y}
-            toX={currToAddresses[0].data.x}
-          />
+          <div style={{textAlign: "center"}}>
+            <h4>Route</h4>
+            <GoogleMap
+              fromY={currFromAddresses[0].data.y}
+              fromX={currFromAddresses[0].data.x}
+              toY={currToAddresses[0].data.y}
+              toX={currToAddresses[0].data.x}
+            />
+          </div>
         )}
 
-        <div className="text-center">
-          <Button variant="primary" onClick={handleCreateTrip}>
+        <div className="text-center pt-3">
+          <Button className="m-1" variant="primary" onClick={handleCreateTrip}>
             Save
           </Button>
-          <Button variant="danger" onClick={() => navigate("/trips")}>
+          <Button className="m-1" variant="danger" onClick={() => navigate("/trips")}>
             Cancel
           </Button>
         </div>
-        <h3 style={{ color: "red" }}>{errorMsg}</h3>
+        <h3 style={{ color: "red", textAlign: "center"}}>{errorMsg}</h3>
       </div>
       <div className="overlay-create-trips"></div>
     </div>
