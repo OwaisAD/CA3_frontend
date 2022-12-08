@@ -117,6 +117,14 @@ function apiFacade() {
     .then(handleHttpErrors)
   }
 
+  const rejectTrip = async (id,proposalId) => {
+    const options = makeOptions("DELETE", true)
+
+    return await fetch(URL + `/trips/${id}/proposal/${proposalId}/reject`,options)
+    .then(handleHttpErrors)
+  }
+
+
   //delete user trip
   const deleteUserTrip = async (id) => {
     const options = makeOptions("DELETE", true)
@@ -192,6 +200,7 @@ function apiFacade() {
     getUserTrip,
     editTrip,
     acceptTrip,
+    rejectTrip,
   };
 }
 const facade = apiFacade();

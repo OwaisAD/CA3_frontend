@@ -35,10 +35,21 @@ const MatchTrip = ({
   const handleAcceptTrip = async () => {
     if (proposalId < 1) return;
     let confirmed = confirm(
-      "Are you sure you want to accept with the proposal id " + proposalId + "?"
+      "Are you sure you want to accept proposal with id " + proposalId + "?"
     );
     if (confirmed) {
       await facade.acceptTrip(tripId, proposalId);
+      navigate("/trips");
+    }
+  };
+
+  const handleRejectTrip = async () => {
+    if (proposalId < 1) return;
+    let confirmed = confirm(
+      "Are you sure you want to reject proposal with id " + proposalId + "?"
+    );
+    if (confirmed) {
+      await facade.rejectTrip(tripId, proposalId);
       navigate("/trips");
     }
   };
@@ -84,7 +95,7 @@ const MatchTrip = ({
             <Button variant="primary" onClick={handleAcceptTrip}>
               Accept
             </Button>
-            <Button variant="danger">Reject</Button>
+            <Button variant="danger" onClick={handleRejectTrip}>Reject</Button>
           </div>
         </>
       ) : (

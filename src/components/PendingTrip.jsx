@@ -18,27 +18,10 @@ const PendingTrip = ({
 }) => {
   const navigate = useNavigate();
 
-  const [proposalId, setProposalId] = useState(0);
-
-  const handleProposalIdChange = (evt) => {
-    setProposalId(evt.target.value);
-  };
-
   const handleDeleteTrip = async () => {
     let confirmed = confirm("Are you sure you want to delete this trip...?");
     if (confirmed) {
       await facade.deleteUserTrip(tripId);
-      navigate("/trips");
-    }
-  };
-
-  const handleAcceptTrip = async () => {
-    if (proposalId < 1) return;
-    let confirmed = confirm(
-      "Are you sure you want to accept with the proposal id " + proposalId + "?"
-    );
-    if (confirmed) {
-      await facade.acceptTrip(tripId, proposalId);
       navigate("/trips");
     }
   };
