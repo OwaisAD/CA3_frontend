@@ -88,10 +88,27 @@ const CreateTrip = () => {
       acceptance_radius: flexibilityRadius,
       date: travelDate,
     };
-    await facade.createTrip(tripObject).then(() => {
-      setErrorMsg("");
-    });
-    navigate("/trips");
+    await facade
+      .createTrip(tripObject)
+      .then(() => {
+        setErrorMsg("");
+        navigate("/trips");
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.status) {
+          err.fullError.then((e) => {
+            if(e.message === "Token not valid (timed out?)") {
+              setErrorMsg("Please login again")
+              setTimeout(facade.logout, 4000)
+              navigate("/")
+            }
+            //setErrorMsg(e.message);
+          });
+        } else {
+          setErrorMsg("Network error");
+        }
+      });
   };
 
   return (
@@ -175,7 +192,7 @@ const CreateTrip = () => {
         </label>
 
         {currFromAddresses.length === 1 && currToAddresses.length === 1 && (
-          <div style={{textAlign: "center"}}>
+          <div style={{ textAlign: "center" }}>
             <h4>Route</h4>
             <GoogleMap
               fromY={currFromAddresses[0].data.y}
@@ -194,7 +211,7 @@ const CreateTrip = () => {
             Cancel
           </Button>
         </div>
-        <h3 style={{ color: "red", textAlign: "center"}}>{errorMsg}</h3>
+        <h3 style={{ color: "red", textAlign: "center" }}>{errorMsg}</h3>
       </div>
       <div className="overlay-create-trips"></div>
     </div>
