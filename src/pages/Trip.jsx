@@ -84,21 +84,32 @@ const Trip = () => {
               <div className="trip-page-container" style={{ borderLeft: "10px solid grey" }}>
                 {error === "" ? (
                   <>
-                    <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
-                      Delete trip <i className="fas fa-trash"></i>
-                    </Button>
-                    <h2>
-                      Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
-                    </h2>
-                    <p>From: {startpointFetched}</p>
-                    <p>To: {endpointFetched}</p>
-                    <p>Flexibility radius: {trip?.acceptance_radius}</p>
-                    <Button onClick={() => setEditingMode(true)}>Edit trip</Button>
+                    <p className="delete-trip-icon" onClick={handleDeleteTrip}>
+                      <i className="fas fa-trash"></i>
+                    </p>
+                    <h3 className="text-center mb-4">
+                      {days[new Date(trip?.date).getDay()]} {trip?.date}
+                    </h3>
+                    <p>
+                      <span className="styling-from-to-flex-span">From: </span>
+                      {startpointFetched}
+                    </p>
+                    <p>
+                      <span className="styling-from-to-flex-span">To: </span>
+                      {endpointFetched}
+                    </p>
+                    <p>
+                      <span className="styling-from-to-flex-span">Flex radius:</span>{" "}
+                      {trip?.acceptance_radius} {trip?.acceptance_radius == 1 ? "km" : "kms"}
+                    </p>
                     {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
-                      <div className="text-center">
+                      <div className="text-center my-2">
                         <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
                       </div>
                     )}
+                    <div className="text-center">
+                      <Button onClick={() => setEditingMode(true)}>Edit trip</Button>
+                    </div>
                   </>
                 ) : (
                   <>

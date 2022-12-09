@@ -23,10 +23,10 @@ const Trips = () => {
   };
 
   const statusColor = {
-    "no matches": "gray",
-    match: "yellow",
-    pending: "orange",
-    accepted: "green",
+    "no matches": "rgb(137, 148, 137)",
+    match: "rgb(252, 255, 82)",
+    pending: "rgb(255,127,80)",
+    accepted: "rgb(124,252,0)",
   };
 
   useEffect(() => {

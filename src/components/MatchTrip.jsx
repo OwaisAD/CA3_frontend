@@ -53,46 +53,56 @@ const MatchTrip = ({
   const preferedTimeFaker = {
     0: "early",
     1: "mid-day",
-    2: "afternoon"
-  }
+    2: "afternoon",
+  };
 
   return (
     <div className="trip-page-container" style={{ borderLeft: "10px solid yellow" }}>
       {error === "" ? (
         <>
-          <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
-            Delete trip <i className="fas fa-trash"></i>
-          </Button>
-          {trip?.proposals.length == 1 ? <h1>Match found!</h1> : <h1>Matches found!</h1>}
-          <h2>
-            Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
-          </h2>
-          <p>From: {startpointFetched}</p>
-          <p>To: {endpointFetched}</p>
-          <p>Flexibility radius: {trip?.acceptance_radius}</p>
+          <p className="delete-trip-icon" onClick={handleDeleteTrip}>
+            <i className="fas fa-trash"></i>
+          </p>
+          <h1 className="text-center">{trip?.proposals.length == 1 ? "Match found!" : "Matches found!"}</h1>
+          <h4 className="text-center mb-4">
+            {days[new Date(trip?.date).getDay()]} {trip?.date}
+          </h4>
+          <p>
+            <span className="styling-from-to-flex-span">From: </span>
+            {startpointFetched}
+          </p>
+          <p>
+            <span className="styling-from-to-flex-span">To: </span>
+            {endpointFetched}
+          </p>
+          <p>
+            <span className="styling-from-to-flex-span">Flex radius:</span>{" "}
+            {trip?.acceptance_radius} {trip?.acceptance_radius == 1 ? "km" : "kms"}
+          </p>
           {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
             <div className="text-center">
               <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
             </div>
           )}
           <div>
-            <h4>These are the following matches you have:</h4>
+            <h5 className="text-center my-3">These are the following matches you have:</h5>
             <select defaultValue={"-"} onChange={handleProposalIdChange}>
               <option value="-"> -- Select an option -- </option>
               {trip?.proposals.map((proposal) => {
                 return (
                   <option value={proposal?.id} key={proposal?.id}>
-                    Trip with {proposal?.username} (prefered time: {preferedTimeFaker[Math.floor(Math.random()*3)]})
+                    Trip with {proposal?.username} (prefered time:{" "}
+                    {preferedTimeFaker[Math.floor(Math.random() * 3)]})
                   </option>
                 );
               })}
             </select>
           </div>
           <div className="text-center">
-            <Button className="m-3" variant="primary" onClick={handleAcceptTrip}>
+            <Button className="m-2" variant="primary" onClick={handleAcceptTrip}>
               Accept
             </Button>
-            <Button className="m-3" variant="danger" onClick={handleRejectTrip}>
+            <Button className="m-2" variant="danger" onClick={handleRejectTrip}>
               Reject
             </Button>
           </div>

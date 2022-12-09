@@ -10,6 +10,7 @@ body {
   font-family: Lato, Roboto, sans-serif;
 }
 
+
 .topnav {
   display: flex;
   flex-direction: row;
@@ -526,7 +527,8 @@ select {
 .refresh-btn {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 20px;
+  font-size: 18px;
 }
 
 .trip-date-with-status {
@@ -680,13 +682,20 @@ select {
  margin: auto;
  position: relative;
  border-radius: 10px;
- padding: 4px;
+ padding: 15px;
 }
 
-.delete-trip {
+.styling-from-to-flex-span {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.delete-trip-icon {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 22px;
 }
 
 .editing-mode-container {

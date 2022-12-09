@@ -174,7 +174,7 @@ const CreateTrip = () => {
         </label>
 
         <label htmlFor="">
-          How far from your start and end locations you can do a drive-by?
+          How flexible can you be on your route (start and end)?
           <Form.Select onChange={handleFlexibilityRadius}>
             <option value="">Select an option (kms)</option>
             <option value={1}>1</option>
