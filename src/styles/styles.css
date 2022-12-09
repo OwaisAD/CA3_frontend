@@ -568,6 +568,7 @@ select {
   /* display: inline-block; */
   z-index: 1000;
   float: right;
+  border: 1px solid rgba(0, 0, 0, 0.126);
 }
 
 
@@ -578,6 +579,7 @@ select {
   /* display: inline-block; */
   z-index: 1000;
   float: left;
+  border: 1px solid rgba(0, 0, 0, 0.126);
 }
 
 /*create trip*/

@@ -44,7 +44,7 @@ const AcceptedTrip = ({
   };
 
   return (
-    <div className="trip-page-container" style={{ borderLeft: "10px solid green" }}>
+    <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(124,252,0)" }}>
       {error === "" ? (
         <>
           <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">

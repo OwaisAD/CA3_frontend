@@ -57,7 +57,7 @@ const MatchTrip = ({
   };
 
   return (
-    <div className="trip-page-container" style={{ borderLeft: "10px solid yellow" }}>
+    <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(252, 255, 82)"}}>
       {error === "" ? (
         <>
           <p className="delete-trip-icon" onClick={handleDeleteTrip}>

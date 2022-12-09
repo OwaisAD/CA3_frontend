@@ -81,7 +81,7 @@ const Trip = () => {
         {trip?.status === "no matches" && (
           <>
             {!editingMode && (
-              <div className="trip-page-container" style={{ borderLeft: "10px solid grey" }}>
+              <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(137, 148, 137)"}}>
                 {error === "" ? (
                   <>
                     <p className="delete-trip-icon" onClick={handleDeleteTrip}>

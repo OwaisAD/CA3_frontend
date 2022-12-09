@@ -107,17 +107,17 @@ const Trips = () => {
 
           <div className="status-container">
             <div>
-              <Status color="green" noStyle /> Both parties accepted
+              <Status color="rgb(124,252,0)" noStyle /> Both parties accepted
             </div>
             <div>
-              <Status color="yellow" noStyle /> Match has been found
-            </div>
-            <div>
-              <Status color="orange" noStyle /> Pending. Waiting for other user
+              <Status color="rgb(255,127,80)" noStyle /> Pending. Waiting for other user
               to accept
             </div>
             <div>
-              <Status color="gray" noStyle /> No match found yet
+              <Status color="rgb(252, 255, 82)" noStyle /> Match has been found
+            </div>
+            <div>
+              <Status color="rgb(137, 148, 137)" noStyle /> No match found yet
             </div>
           </div>
         </div>
