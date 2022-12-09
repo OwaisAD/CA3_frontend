@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_NAME="ca2_react"
+PROJECT_NAME="ca3_react"
 # DROPLET_URL="YOUR_WEBSITE_URL"
 # echo -n "please enter the project name as it appears on the server in /var/www/"
 # read -r 
