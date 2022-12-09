@@ -50,7 +50,7 @@ const AcceptedTrip = ({
           <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
             Delete trip <i className="fas fa-trash"></i>
           </Button>
-          <h1>You and X accepted the trip!</h1>
+          <h1>You and {trip?.proposals[0].username} accepted the trip!</h1>
           <h2>
             Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h2>

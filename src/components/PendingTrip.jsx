@@ -34,7 +34,7 @@ const PendingTrip = ({
             Delete trip <i className="fas fa-trash"></i>
           </Button>
           <h2>Pending:</h2>
-          <h3>Waiting for others to accept.</h3>
+          <h3>Waiting for {trip?.proposals[0].username} to accept.</h3>
           <h4>
             Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h4>

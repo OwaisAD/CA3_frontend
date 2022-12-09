@@ -50,6 +50,12 @@ const MatchTrip = ({
     }
   };
 
+  const preferedTimeFaker = {
+    0: "early",
+    1: "mid-day",
+    2: "afternoon"
+  }
+
   return (
     <div className="trip-page-container" style={{ borderLeft: "10px solid yellow" }}>
       {error === "" ? (
@@ -57,7 +63,7 @@ const MatchTrip = ({
           <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
             Delete trip <i className="fas fa-trash"></i>
           </Button>
-          <h1>Match found!</h1>
+          {trip?.proposals.length == 1 ? <h1>Match found!</h1> : <h1>Matches found!</h1>}
           <h2>
             Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h2>
@@ -76,17 +82,17 @@ const MatchTrip = ({
               {trip?.proposals.map((proposal) => {
                 return (
                   <option value={proposal?.id} key={proposal?.id}>
-                    {proposal?.id}
+                    Trip with {proposal?.username} (prefered time: {preferedTimeFaker[Math.floor(Math.random()*3)]})
                   </option>
                 );
               })}
             </select>
           </div>
-          <div>
-            <Button variant="primary" onClick={handleAcceptTrip}>
+          <div className="text-center">
+            <Button className="m-3" variant="primary" onClick={handleAcceptTrip}>
               Accept
             </Button>
-            <Button variant="danger" onClick={handleRejectTrip}>
+            <Button className="m-3" variant="danger" onClick={handleRejectTrip}>
               Reject
             </Button>
           </div>
