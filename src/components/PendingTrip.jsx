@@ -30,9 +30,9 @@ const PendingTrip = ({
     <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(255,127,80)" }}>
       {error === "" ? (
         <>
-          <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
-            Delete trip <i className="fas fa-trash"></i>
-          </Button>
+          <p className="delete-trip-icon" onClick={handleDeleteTrip}>
+            <i className="fas fa-trash"></i>
+          </p>
           <h2>Pending:</h2>
           <h3>Waiting for {trip?.proposals[0].username} to accept.</h3>
           <h4>

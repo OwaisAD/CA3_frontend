@@ -47,9 +47,9 @@ const AcceptedTrip = ({
     <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(124,252,0)" }}>
       {error === "" ? (
         <>
-          <Button className="delete-trip" onClick={handleDeleteTrip} variant="danger">
-            Delete trip <i className="fas fa-trash"></i>
-          </Button>
+          <p className="delete-trip-icon" onClick={handleDeleteTrip}>
+           <i className="fas fa-trash"></i>
+          </p>
           <h1>You and {trip?.proposals[0].username} accepted the trip!</h1>
           <h2>
             Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
