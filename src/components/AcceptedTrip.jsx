@@ -50,13 +50,13 @@ const AcceptedTrip = ({
           <p className="delete-trip-icon" onClick={handleDeleteTrip}>
            <i className="fas fa-trash"></i>
           </p>
-          <h1>You and {trip?.proposals[0].username} accepted the trip!</h1>
-          <h2>
-            Travel date: {days[new Date(trip?.date).getDay()]} {trip?.date}
-          </h2>
-          <p>From: {startpointFetched}</p>
-          <p>To: {endpointFetched}</p>
-          <p>Flexibility radius: {trip?.acceptance_radius}</p>
+          <h1 className="text-center">You and {trip?.proposals[0].username} accepted the trip!</h1>
+          <h3 className="text-center my-4">
+            {days[new Date(trip?.date).getDay()]} {trip?.date}
+          </h3>
+          <p><span className="styling-from-to-flex-span">From: </span> {startpointFetched}</p>
+          <p><span className="styling-from-to-flex-span">To: </span> {endpointFetched}</p>
+          <p><span className="styling-from-to-flex-span">Flex radius: </span> {trip?.acceptance_radius} {trip?.acceptance_radius == 1 ? "km" : "kms"}</p>
           {fromX !== "" && fromY !== "" && toX !== "" && toY !== "" && (
             <div className="text-center">
               <GoogleMap fromX={fromX} fromY={fromY} toX={toX} toY={toY} />
