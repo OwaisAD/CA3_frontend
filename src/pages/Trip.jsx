@@ -87,7 +87,8 @@ const Trip = () => {
                     <p className="delete-trip-icon" onClick={handleDeleteTrip}>
                       <i className="fas fa-trash"></i>
                     </p>
-                    <h3 className="text-center mb-4">
+                    <h1 className="text-center">Looking for matches..</h1>
+                    <h3 className="text-center mt-3 mb-4">
                       {days[new Date(trip?.date).getDay()]} {trip?.date}
                     </h3>
                     <p>

@@ -64,7 +64,7 @@ const MatchTrip = ({
             <i className="fas fa-trash"></i>
           </p>
           <h1 className="text-center">{trip?.proposals.length == 1 ? "Match found!" : "Matches found!"}</h1>
-          <h4 className="text-center mb-4">
+          <h4 className="text-center mt-3 mb-4">
             {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h4>
           <p>

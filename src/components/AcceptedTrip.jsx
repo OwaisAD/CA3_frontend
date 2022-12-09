@@ -51,7 +51,7 @@ const AcceptedTrip = ({
            <i className="fas fa-trash"></i>
           </p>
           <h1 className="text-center">You and {trip?.proposals[0].username} accepted the trip!</h1>
-          <h3 className="text-center my-4">
+          <h3 className="text-center mt-3 mb-4">
             {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h3>
           <p><span className="styling-from-to-flex-span">From: </span> {startpointFetched}</p>
