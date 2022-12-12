@@ -264,6 +264,20 @@ select {
   color: #00FF00;
 }
 
+@media (max-width: 480px) {
+  .home-slogan {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  .home-slogan {
+    font-size: 70px;
+  }
+}
+
 
 .overlay {
   position: absolute;
@@ -399,6 +413,12 @@ select {
   .create-user-container {
     grid-template-columns: 0fr 1fr;
   }
+  .logo {
+    width: 30px;
+    height: 30px;
+    border: 0.3px solid rgba(0, 0, 0, 0.158);
+    border-radius: 50%;
+  }
 }
 
 /* Media Query for low resolution  Tablets, Ipads */
@@ -414,8 +434,7 @@ select {
   .logo {
     width: 45px;
     height: 45px;
-    transition: transform 0.8s ease-in-out;
-    border: 0.5px solid black;
+    border: 0.3px solid rgba(0, 0, 0, 0.158);
     border-radius: 50%;
   }
 }
