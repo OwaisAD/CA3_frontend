@@ -244,23 +244,30 @@ select {
   background: url("../images/home_background.jpg") no-repeat center;
   background-size: cover;
 }
-.home-header h1 {
-  font-family: Roboto;
-  font-weight: 600;
-  font-size: 110px;
-  line-height: 116px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-}
+
 .content {
   position: fixed;
   z-index: 1000;
 }
+
+.home-slogan {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 115px;
+  line-height: 116px;
+  color: rgba(255, 255, 255, 0.966);
+  text-align: center;
+}
+
+.inline-home {
+  display: inline-block;
+  color: #00FF00;
+}
+
+
 .overlay {
   position: absolute;
-  background-color: #0006;
+  background-color: rgba(0, 0, 0, 0.418);
   width: 100%;
   height: 100%;
   z-index: 999;
@@ -361,35 +368,6 @@ select {
 }
 
 
-@media (max-width: 480px) {
-  .login-container {
-    grid-template-columns: 0fr 1fr;
-  }
-}
-
-/* Media Query for low resolution  Tablets, Ipads */
-@media (min-width: 481px) and (max-width: 767px) {
-  .login-container {
-    grid-template-columns: 0fr 1fr;
-  }
-}
-
-/* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
-  .login-container {
-    grid-template-columns: 0.7fr 1fr;
-  }
-}
-
-/* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){
-  .login-container {
-    grid-template-columns: 0.9fr 1fr;
-  }
-}
-
-
-
 /*CREATE USER PAGE*/
 .create-user-container {
   display: grid;
@@ -411,7 +389,13 @@ select {
   min-width: none;
 }
 
+/* media queries for login and signup */
+
 @media (max-width: 480px) {
+  .login-container {
+    grid-template-columns: 0fr 1fr;
+  }
+
   .create-user-container {
     grid-template-columns: 0fr 1fr;
   }
@@ -419,13 +403,28 @@ select {
 
 /* Media Query for low resolution  Tablets, Ipads */
 @media (min-width: 481px) and (max-width: 767px) {
+  .login-container {
+    grid-template-columns: 0fr 1fr;
+  }
+
   .create-user-container {
     grid-template-columns: 0fr 1fr;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+    transition: transform 0.8s ease-in-out;
+    border: 0.5px solid black;
+    border-radius: 50%;
   }
 }
 
 /* Media Query for Tablets Ipads portrait mode */
 @media (min-width: 768px) and (max-width: 1024px){
+  .login-container {
+    grid-template-columns: 0.7fr 1fr;
+  }
   .create-user-container {
     grid-template-columns: 0.7fr 1fr;
   }
@@ -433,6 +432,9 @@ select {
 
 /* Media Query for Laptops and Desktops */
 @media (min-width: 1025px) and (max-width: 1280px){
+  .login-container {
+    grid-template-columns: 0.9fr 1fr;
+  }
   .create-user-container {
     grid-template-columns: 0.9fr 1fr;
   }
@@ -769,3 +771,4 @@ select {
   width: 65px;
   border-radius: 8px;
 }
+

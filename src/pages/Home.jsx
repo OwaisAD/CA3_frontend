@@ -5,8 +5,8 @@ function Home() {
   return (
     <>
       <div className="home-header">
-        <div className="content">
-          <h1>Share a car <br /> for our planet</h1>
+        <div className="content text-center">
+          <span className="home-slogan">Share A<p className="inline-home">nd</p> Car<span className="inline-home">e</span><br /> for our planet</span>
         </div>
         <Outlet />
       </div>
