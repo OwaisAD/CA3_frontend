@@ -13,6 +13,9 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
   const [dataFromServer, setDataFromServer] = useState("Loading...");
   // NEED TO HAVE A STATE THAT CHECKS WETHER A USER ADDED A MOVIE TO WATCHLIST, IF YES, THEN USEEFFECT SHOULD RELY ON THAT VARIABLE
 
+  const [historyOfTrips, setHistoryOfTrips] = useState([]);
+
+
   const [editingUsername, setEditingUsername] = useState(false);
   const [editedUsername, setEditedUsername] = useState(false); //only used for the useeffect
 
@@ -30,7 +33,12 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
         setDataFromServer(data);
       });
     }
+
+    facade.fetchHistoryOfTrips().then((data) => {
+      setHistoryOfTrips(data)
+    })
   }, [editedUsername, editedEmail, editedAge]);
+
 
   const handleUsernameUpdate = async () => {
     if (
@@ -100,6 +108,16 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
     }
   };
 
+  const days = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+  };
+
   return (
     <>
       {!loggedIn ? (
@@ -116,11 +134,12 @@ const Profile = ({ loggedIn, setLoggedIn, editedProfile, setEditedProfile }) => 
             <div className="profile-container">
               <div className="profile-inner-container">
                 <h3 className="text-center mb-4">Trip History</h3>
-                <li>hi</li>
-                {dataFromServer?.trips?.map((trip) => {
+                
+                {historyOfTrips.length < 1 ? <p>No trips in history</p> : historyOfTrips?.map((trip) => {
+                  console.log(trip);
                   return (
-                    <li key={trip.id}>
-                      {trip.title} from {trip.year}
+                    <li key={trip?.id} style={{listStyleType: "none"}}>
+                      {days[new Date(trip?.date).getDay()]} {trip?.date}, status: {trip?.status}
                     </li>
                   );
                 })}

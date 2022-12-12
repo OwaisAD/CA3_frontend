@@ -94,6 +94,13 @@ function apiFacade() {
     
   };
 
+  const fetchHistoryOfTrips = async () => {
+    const options = makeOptions("GET", true)
+
+    return await fetch(URL + "/users/me/trips/historic", options)
+    .then(handleHttpErrors)
+  }
+
   //get user trips
   const getUserTrips = async () => {
     const options = makeOptions("GET", true)
@@ -188,6 +195,7 @@ function apiFacade() {
     login,
     logout,
     fetchData,
+    fetchHistoryOfTrips,
     setUsername,
     getUsername,
     createUser,
