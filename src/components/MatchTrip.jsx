@@ -50,12 +50,6 @@ const MatchTrip = ({
     }
   };
 
-  const preferedTimeFaker = {
-    0: "early",
-    1: "mid-day",
-    2: "afternoon",
-  };
-
   return (
     <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(252, 255, 82)"}}>
       {error === "" ? (
@@ -91,8 +85,8 @@ const MatchTrip = ({
               {trip?.proposals.map((proposal) => {
                 return (
                   <option value={proposal?.id} key={proposal?.id}>
-                    Trip with {proposal?.username} (prefered time:{" "}
-                    {preferedTimeFaker[Math.floor(Math.random() * 3)]})
+                    Trip with {proposal?.username}
+                    
                   </option>
                 );
               })}
