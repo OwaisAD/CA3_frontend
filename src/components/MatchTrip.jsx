@@ -20,8 +20,16 @@ const MatchTrip = ({
 
   const [proposalId, setProposalId] = useState(0);
 
+  const [username, setUsername] = useState("");
+
   const handleProposalIdChange = (evt) => {
     setProposalId(evt.target.value);
+    handleUsernameChange(proposalId);
+  };
+
+  const handleUsernameChange = (proposalId) => {
+    const newArr = trip?.proposals.filter((proposal) => proposal.id != proposalId);
+    setUsername(newArr[0].username);
   };
 
   const handleDeleteTrip = async () => {
@@ -34,7 +42,7 @@ const MatchTrip = ({
 
   const handleAcceptTrip = async () => {
     if (proposalId < 1) return;
-    let confirmed = confirm("Are you sure you want to accept proposal with id " + proposalId + "?");
+    let confirmed = confirm("Are you sure you want to accept proposal with " + username + "?");
     if (confirmed) {
       await facade.acceptTrip(tripId, proposalId);
       navigate("/trips");
@@ -43,7 +51,7 @@ const MatchTrip = ({
 
   const handleRejectTrip = async () => {
     if (proposalId < 1) return;
-    let confirmed = confirm("Are you sure you want to reject proposal with id " + proposalId + "?");
+    let confirmed = confirm("Are you sure you want to reject proposal with " + username + "?");
     if (confirmed) {
       await facade.rejectTrip(tripId, proposalId);
       navigate("/trips");
@@ -51,13 +59,15 @@ const MatchTrip = ({
   };
 
   return (
-    <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(252, 255, 82)"}}>
+    <div className="trip-page-container" style={{ borderLeft: "10px solid rgb(252, 255, 82)" }}>
       {error === "" ? (
         <>
           <p className="delete-trip-icon" onClick={handleDeleteTrip}>
             <i className="fas fa-trash"></i>
           </p>
-          <h1 className="text-center">{trip?.proposals.length == 1 ? "Match found!" : "Matches found!"}</h1>
+          <h1 className="text-center">
+            {trip?.proposals.length == 1 ? "Match found!" : "Matches found!"}
+          </h1>
           <h4 className="text-center mt-3 mb-4">
             {days[new Date(trip?.date).getDay()]} {trip?.date}
           </h4>
@@ -86,7 +96,6 @@ const MatchTrip = ({
                 return (
                   <option value={proposal?.id} key={proposal?.id}>
                     Trip with {proposal?.username}
-                    
                   </option>
                 );
               })}
